@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
@@ -30,6 +31,7 @@ import com.salesdb.FollowUps;
  * @see FollowUps
  */
 @Service("salesdb.FollowUpsService")
+@Validated
 public class FollowUpsServiceImpl implements FollowUpsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FollowUpsServiceImpl.class);

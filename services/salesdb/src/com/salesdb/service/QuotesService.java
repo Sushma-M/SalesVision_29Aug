@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -31,7 +33,7 @@ public interface QuotesService {
      * @param quotes Details of the Quotes to be created; value cannot be null.
      * @return The newly created Quotes.
      */
-	Quotes create(Quotes quotes);
+	Quotes create(@Valid Quotes quotes);
 
 
 	/**
@@ -61,7 +63,7 @@ public interface QuotesService {
 	 * @return The updated Quotes.
 	 * @throws EntityNotFoundException if no Quotes is found with given input.
 	 */
-	Quotes update(Quotes quotes) throws EntityNotFoundException;
+	Quotes update(@Valid Quotes quotes) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Quotes with the given id.
@@ -141,18 +143,6 @@ public interface QuotesService {
 	Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
-     * Returns the associated followUpses for given Quotes id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated FollowUps instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<FollowUps> findAssociatedFollowUpses(Integer id, Pageable pageable);
-
-    /*
      * Returns the associated saleses for given Quotes id.
      *
      * @param id value of id; value cannot be null
@@ -163,6 +153,18 @@ public interface QuotesService {
      * @see Page
      */
     Page<Sales> findAssociatedSaleses(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated followUpses for given Quotes id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated FollowUps instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<FollowUps> findAssociatedFollowUpses(Integer id, Pageable pageable);
 
 }
 

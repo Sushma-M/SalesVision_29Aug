@@ -33,8 +33,8 @@ public class Leads implements Serializable {
     private Integer id;
     private Integer customerId;
     private Date entryDate;
-    private List<Quotes> quoteses;
     private Customers customers;
+    private List<Quotes> quoteses;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,16 +65,6 @@ public class Leads implements Serializable {
         this.entryDate = entryDate;
     }
 
-    @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "leads")
-    public List<Quotes> getQuoteses() {
-        return this.quoteses;
-    }
-
-    public void setQuoteses(List<Quotes> quoteses) {
-        this.quoteses = quoteses;
-    }
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`CUSTOMER_ID`", referencedColumnName = "`ID`", insertable = false, updatable = false)
     public Customers getCustomers() {
@@ -87,6 +77,16 @@ public class Leads implements Serializable {
         }
 
         this.customers = customers;
+    }
+
+    @JsonInclude(Include.NON_EMPTY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "leads")
+    public List<Quotes> getQuoteses() {
+        return this.quoteses;
+    }
+
+    public void setQuoteses(List<Quotes> quoteses) {
+        this.quoteses = quoteses;
     }
 
     @Override

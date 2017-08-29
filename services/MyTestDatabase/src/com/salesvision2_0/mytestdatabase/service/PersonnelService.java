@@ -5,6 +5,8 @@ package com.salesvision2_0.mytestdatabase.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -29,7 +31,7 @@ public interface PersonnelService {
      * @param personnel Details of the Personnel to be created; value cannot be null.
      * @return The newly created Personnel.
      */
-	Personnel create(Personnel personnel);
+	Personnel create(@Valid Personnel personnel);
 
 
 	/**
@@ -59,7 +61,7 @@ public interface PersonnelService {
 	 * @return The updated Personnel.
 	 * @throws EntityNotFoundException if no Personnel is found with given input.
 	 */
-	Personnel update(Personnel personnel) throws EntityNotFoundException;
+	Personnel update(@Valid Personnel personnel) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Personnel with the given id.

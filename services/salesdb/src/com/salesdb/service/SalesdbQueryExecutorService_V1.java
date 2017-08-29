@@ -17,37 +17,19 @@ import com.salesdb.models.query.*;
 public interface SalesdbQueryExecutorService_V1 {
 
     @Deprecated
-    public Page<Object> executeRepsCount(Pageable pageable, Integer channel);
-
-    @Deprecated
-    public Page<Object> executeLeadsByChannel(Pageable pageable, Integer channel);
+    public Page<Object> executeSalesByEachRep(Pageable pageable, Integer id);
 
     @Deprecated
     public Page<Object> executeLeadsCount(Pageable pageable, Integer channel);
 
     @Deprecated
-    public Page<Object> executeSalesByEachRep(Pageable pageable, Integer id);
-
-    @Deprecated
-    public Page<Object> executeCustomersRatio(Pageable pageable, Integer year, Integer month);
-
-    @Deprecated
-    public Page<Object> executeSalesByReps(Pageable pageable, Integer channel);
-
-    @Deprecated
     public Page<Object> executeWeeklyQuotes(Pageable pageable, Integer year, Integer month);
 
     @Deprecated
-    public Page<Object> executeSalesRevenueAndCount(Pageable pageable, Integer channel);
+    public Page<Object> executeLeadsByChannel(Pageable pageable, Integer channel);
 
     @Deprecated
-    public Page<Object> executeEachRepCustomerWiseSales(Pageable pageable, Integer id);
-
-    @Deprecated
-    public Page<Object> executeWeeklyConverted(Pageable pageable, Integer year, Integer month);
-
-    @Deprecated
-    public Page<Object> executeWeeklyFollowUps(Pageable pageable, Integer year, Integer month);
+    public Page<Object> executeCustomersRatio(Pageable pageable, Integer year, Integer month);
 
     @Deprecated
     public Page<Object> executeSalesByChannels(Pageable pageable, Integer year, Integer month);
@@ -56,13 +38,31 @@ public interface SalesdbQueryExecutorService_V1 {
     public Page<Object> executeWeeklySales(Pageable pageable, Integer year, Integer month);
 
     @Deprecated
-    public Page<Object> executeWeeklyLeads(Pageable pageable, Integer year, Integer month);
+    public Page<Object> executeTopTrendingProducts(Pageable pageable, Integer year, Integer month);
+
+    @Deprecated
+    public Page<Object> executeWeeklyConverted(Pageable pageable, Integer year, Integer month);
+
+    @Deprecated
+    public Page<Object> executeRepsCount(Pageable pageable, Integer channel);
 
     @Deprecated
     public Page<Object> executeRevenueHeatMap(Pageable pageable, Integer year, Integer month);
 
     @Deprecated
-    public Page<Object> executeTopTrendingProducts(Pageable pageable, Integer year, Integer month);
+    public Page<Object> executeWeeklyLeads(Pageable pageable, Integer year, Integer month);
+
+    @Deprecated
+    public Page<Object> executeEachRepCustomerWiseSales(Pageable pageable, Integer id);
+
+    @Deprecated
+    public Page<Object> executeSalesByReps(Pageable pageable, Integer channel);
+
+    @Deprecated
+    public Page<Object> executeSalesRevenueAndCount(Pageable pageable, Integer channel);
+
+    @Deprecated
+    public Page<Object> executeWeeklyFollowUps(Pageable pageable, Integer year, Integer month);
 
 }
 

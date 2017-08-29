@@ -9,10 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
@@ -32,17 +34,20 @@ import com.salesdb.Tasks;
  * @see Reps
  */
 @Service("salesdb.RepsService")
+@Validated
 public class RepsServiceImpl implements RepsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RepsServiceImpl.class);
 
-    @Autowired
-	@Qualifier("salesdb.QuotesService")
-	private QuotesService quotesService;
-
+    @Lazy
     @Autowired
 	@Qualifier("salesdb.TasksService")
 	private TasksService tasksService;
+
+    @Lazy
+    @Autowired
+	@Qualifier("salesdb.QuotesService")
+	private QuotesService quotesService;
 
     @Autowired
     @Qualifier("salesdb.RepsDao")
@@ -177,19 +182,19 @@ public class RepsServiceImpl implements RepsService {
     /**
 	 * This setter method should only be used by unit tests
 	 *
-	 * @param service QuotesService instance
+	 * @param service TasksService instance
 	 */
-	protected void setQuotesService(QuotesService service) {
-        this.quotesService = service;
+	protected void setTasksService(TasksService service) {
+        this.tasksService = service;
     }
 
     /**
 	 * This setter method should only be used by unit tests
 	 *
-	 * @param service TasksService instance
+	 * @param service QuotesService instance
 	 */
-	protected void setTasksService(TasksService service) {
-        this.tasksService = service;
+	protected void setQuotesService(QuotesService service) {
+        this.quotesService = service;
     }
 
 }

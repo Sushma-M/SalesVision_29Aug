@@ -51,9 +51,9 @@ public class LeadsController {
 	private LeadsService leadsService;
 
 	@ApiOperation(value = "Creates a new Leads instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Leads createLeads(@RequestBody Leads leads) {
+public Leads createLeads(@RequestBody Leads leads) {
 		LOGGER.debug("Create Leads with information: {}" , leads);
 
 		leads = leadsService.create(leads);
@@ -61,7 +61,6 @@ public class LeadsController {
 
 	    return leads;
 	}
-
 
     @ApiOperation(value = "Returns the Leads instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

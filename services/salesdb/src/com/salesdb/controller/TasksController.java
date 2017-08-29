@@ -50,9 +50,9 @@ public class TasksController {
 	private TasksService tasksService;
 
 	@ApiOperation(value = "Creates a new Tasks instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Tasks createTasks(@RequestBody Tasks tasks) {
+public Tasks createTasks(@RequestBody Tasks tasks) {
 		LOGGER.debug("Create Tasks with information: {}" , tasks);
 
 		tasks = tasksService.create(tasks);
@@ -60,7 +60,6 @@ public class TasksController {
 
 	    return tasks;
 	}
-
 
     @ApiOperation(value = "Returns the Tasks instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

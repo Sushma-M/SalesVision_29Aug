@@ -534,9 +534,9 @@ Application.$controller('GooglemapsController', ['$scope', 'Utils', '$element', 
         function mapTypeOperations(newVal) {
             if ($s.widgetid) {
                 var wp = $s.widgetProps,
-                    markerProps  = ['onMarkerclick', 'onMarkerhover', 'onClick', 'radius', 'shade', 'info', 'icon', 'markertype', 'locations', 'lat', 'lng'],
-                    heatmapProps = ['locations', 'lat', 'lng', 'gradient', 'pixeldensity', 'opacity'],
-                    routeProps   = ['origin', 'destination', 'trafficlayer', 'transitlayer', 'travelmode', 'waypoints', 'stopover'],
+                    markerProps  = ['onMarkerclick', 'onMarkerhover', 'onClick', 'radius', 'shade', 'info', 'icon', 'markertype', 'locations', 'lat', 'lng', 'viewtype'],
+                    heatmapProps = ['locations', 'lat', 'lng', 'gradient', 'pixeldensity', 'opacity', 'viewtype'],
+                    routeProps   = ['origin', 'destination', 'trafficlayer', 'transitlayer', 'travelmode', 'waypoints', 'stopover', 'viewtype'],
                     commonProps  = ['name', 'tabindex', 'maptype', 'zoom', 'height', 'width', 'show', 'animation', 'onLoad', 'onDestroy', 'accessroles', 'class', 'margin', 'active', 'debugurl', 'showindevice'],
                     maptypeProps;
 

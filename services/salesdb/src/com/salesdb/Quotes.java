@@ -35,8 +35,8 @@ public class Quotes implements Serializable {
     private Date entryDate;
     private Integer repId;
     private Integer estimatedSale;
-    private List<FollowUps> followUpses;
     private List<Sales> saleses;
+    private List<FollowUps> followUpses;
     private Reps reps;
     private Leads leads;
 
@@ -89,22 +89,22 @@ public class Quotes implements Serializable {
 
     @JsonInclude(Include.NON_EMPTY)
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "quotes")
-    public List<FollowUps> getFollowUpses() {
-        return this.followUpses;
-    }
-
-    public void setFollowUpses(List<FollowUps> followUpses) {
-        this.followUpses = followUpses;
-    }
-
-    @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "quotes")
     public List<Sales> getSaleses() {
         return this.saleses;
     }
 
     public void setSaleses(List<Sales> saleses) {
         this.saleses = saleses;
+    }
+
+    @JsonInclude(Include.NON_EMPTY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "quotes")
+    public List<FollowUps> getFollowUpses() {
+        return this.followUpses;
+    }
+
+    public void setFollowUpses(List<FollowUps> followUpses) {
+        this.followUpses = followUpses;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)

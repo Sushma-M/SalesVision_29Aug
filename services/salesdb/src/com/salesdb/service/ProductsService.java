@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -30,7 +32,7 @@ public interface ProductsService {
      * @param products Details of the Products to be created; value cannot be null.
      * @return The newly created Products.
      */
-	Products create(Products products);
+	Products create(@Valid Products products);
 
 
 	/**
@@ -60,7 +62,7 @@ public interface ProductsService {
 	 * @return The updated Products.
 	 * @throws EntityNotFoundException if no Products is found with given input.
 	 */
-	Products update(Products products) throws EntityNotFoundException;
+	Products update(@Valid Products products) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Products with the given id.

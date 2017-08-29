@@ -35,9 +35,9 @@
   "dataSourceType" : "WM_MANAGED_DATASOURCE",
   "jndiName" : "",
   "reloadInfo" : {
-    "reload" : true,
-    "reason" : "MIGRATION_FAILED",
-    "message" : "Source code re-generation needed with respect to spring upgrade"
+    "reload" : false,
+    "reason" : null,
+    "message" : null
   },
   "readOnly" : true
 }

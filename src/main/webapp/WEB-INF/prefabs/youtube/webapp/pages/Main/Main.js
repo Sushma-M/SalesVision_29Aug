@@ -1,5 +1,5 @@
 /*global Application */
-Application.$controller('YoutubeController', ['$scope', '$sce', 'Utils', function ($scope, $sce, Utils) {
+Application.$controller('YoutubeController', ['$scope', '$sce', 'Utils', 'CONSTANTS', function ($scope, $sce, Utils, CONSTANTS) {
     "use strict";
 
     /* Define the property change handler. This function will be triggered when there is a change in the prefab property */
@@ -11,7 +11,7 @@ Application.$controller('YoutubeController', ['$scope', '$sce', 'Utils', functio
             }
 
             /* remove http or https from the url (to follow the protocol which the app is using) */
-            newVal = Utils.removeProtocol(newVal);
+            newVal = CONSTANTS.hasCordova ? newVal : Utils.removeProtocol(newVal);
 
             newVal = newVal.replace("/watch?v=", "/embed/");
             newVal += (newVal.indexOf("?") === -1 ? "?" : "&") + "wmode=transparent";

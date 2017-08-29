@@ -9,10 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
@@ -32,17 +34,20 @@ import com.salesdb.Sales;
  * @see Quotes
  */
 @Service("salesdb.QuotesService")
+@Validated
 public class QuotesServiceImpl implements QuotesService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(QuotesServiceImpl.class);
 
-    @Autowired
-	@Qualifier("salesdb.SalesService")
-	private SalesService salesService;
-
+    @Lazy
     @Autowired
 	@Qualifier("salesdb.FollowUpsService")
 	private FollowUpsService followUpsService;
+
+    @Lazy
+    @Autowired
+	@Qualifier("salesdb.SalesService")
+	private SalesService salesService;
 
     @Autowired
     @Qualifier("salesdb.QuotesDao")
@@ -57,19 +62,19 @@ public class QuotesServiceImpl implements QuotesService {
 	public Quotes create(Quotes quotes) {
         LOGGER.debug("Creating a new Quotes with information: {}", quotes);
         Quotes quotesCreated = this.wmGenericDao.create(quotes);
-        if(quotesCreated.getFollowUpses() != null) {
-            for(FollowUps followUpse : quotesCreated.getFollowUpses()) {
-                followUpse.setQuotes(quotesCreated);
-                LOGGER.debug("Creating a new child FollowUps with information: {}", followUpse);
-                followUpsService.create(followUpse);
-            }
-        }
-
         if(quotesCreated.getSaleses() != null) {
             for(Sales salese : quotesCreated.getSaleses()) {
                 salese.setQuotes(quotesCreated);
                 LOGGER.debug("Creating a new child Sales with information: {}", salese);
                 salesService.create(salese);
+            }
+        }
+
+        if(quotesCreated.getFollowUpses() != null) {
+            for(FollowUps followUpse : quotesCreated.getFollowUpses()) {
+                followUpse.setQuotes(quotesCreated);
+                LOGGER.debug("Creating a new child FollowUps with information: {}", followUpse);
+                followUpsService.create(followUpse);
             }
         }
         return quotesCreated;
@@ -154,17 +159,6 @@ public class QuotesServiceImpl implements QuotesService {
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
     @Override
-    public Page<FollowUps> findAssociatedFollowUpses(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated followUpses");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("quotes.id = '" + id + "'");
-
-        return followUpsService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "salesdbTransactionManager")
-    @Override
     public Page<Sales> findAssociatedSaleses(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated saleses");
 
@@ -174,13 +168,15 @@ public class QuotesServiceImpl implements QuotesService {
         return salesService.findAll(queryBuilder.toString(), pageable);
     }
 
-    /**
-	 * This setter method should only be used by unit tests
-	 *
-	 * @param service SalesService instance
-	 */
-	protected void setSalesService(SalesService service) {
-        this.salesService = service;
+    @Transactional(readOnly = true, value = "salesdbTransactionManager")
+    @Override
+    public Page<FollowUps> findAssociatedFollowUpses(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated followUpses");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("quotes.id = '" + id + "'");
+
+        return followUpsService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**
@@ -190,6 +186,15 @@ public class QuotesServiceImpl implements QuotesService {
 	 */
 	protected void setFollowUpsService(FollowUpsService service) {
         this.followUpsService = service;
+    }
+
+    /**
+	 * This setter method should only be used by unit tests
+	 *
+	 * @param service SalesService instance
+	 */
+	protected void setSalesService(SalesService service) {
+        this.salesService = service;
     }
 
 }

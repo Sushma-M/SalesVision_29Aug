@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -30,7 +32,7 @@ public interface StatesService {
      * @param states Details of the States to be created; value cannot be null.
      * @return The newly created States.
      */
-	States create(States states);
+	States create(@Valid States states);
 
 
 	/**
@@ -60,7 +62,7 @@ public interface StatesService {
 	 * @return The updated States.
 	 * @throws EntityNotFoundException if no States is found with given input.
 	 */
-	States update(States states) throws EntityNotFoundException;
+	States update(@Valid States states) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing States with the given id.

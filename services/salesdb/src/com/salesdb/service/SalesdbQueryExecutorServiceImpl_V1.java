@@ -33,36 +33,6 @@ public class SalesdbQueryExecutorServiceImpl_V1 implements SalesdbQueryExecutorS
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
     @Override
-    public Page<Object> executeRepsCount(Pageable pageable, Integer channel) {
-        Map params = new HashMap(1);
-
-        params.put("channel", channel);
-
-        return queryExecutor.executeNamedQuery("repsCount", params, Object.class, pageable);
-    }
-
-    @Transactional(readOnly = true, value = "salesdbTransactionManager")
-    @Override
-    public Page<Object> executeLeadsByChannel(Pageable pageable, Integer channel) {
-        Map params = new HashMap(1);
-
-        params.put("channel", channel);
-
-        return queryExecutor.executeNamedQuery("leadsByChannel", params, Object.class, pageable);
-    }
-
-    @Transactional(readOnly = true, value = "salesdbTransactionManager")
-    @Override
-    public Page<Object> executeLeadsCount(Pageable pageable, Integer channel) {
-        Map params = new HashMap(1);
-
-        params.put("channel", channel);
-
-        return queryExecutor.executeNamedQuery("leadsCount", params, Object.class, pageable);
-    }
-
-    @Transactional(readOnly = true, value = "salesdbTransactionManager")
-    @Override
     public Page<Object> executeSalesByEachRep(Pageable pageable, Integer id) {
         Map params = new HashMap(1);
 
@@ -73,23 +43,12 @@ public class SalesdbQueryExecutorServiceImpl_V1 implements SalesdbQueryExecutorS
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
     @Override
-    public Page<Object> executeCustomersRatio(Pageable pageable, Integer year, Integer month) {
-        Map params = new HashMap(2);
-
-        params.put("year", year);
-        params.put("month", month);
-
-        return queryExecutor.executeNamedQuery("customersRatio", params, Object.class, pageable);
-    }
-
-    @Transactional(readOnly = true, value = "salesdbTransactionManager")
-    @Override
-    public Page<Object> executeSalesByReps(Pageable pageable, Integer channel) {
+    public Page<Object> executeLeadsCount(Pageable pageable, Integer channel) {
         Map params = new HashMap(1);
 
         params.put("channel", channel);
 
-        return queryExecutor.executeNamedQuery("salesByReps", params, Object.class, pageable);
+        return queryExecutor.executeNamedQuery("leadsCount", params, Object.class, pageable);
     }
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
@@ -105,44 +64,23 @@ public class SalesdbQueryExecutorServiceImpl_V1 implements SalesdbQueryExecutorS
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
     @Override
-    public Page<Object> executeSalesRevenueAndCount(Pageable pageable, Integer channel) {
+    public Page<Object> executeLeadsByChannel(Pageable pageable, Integer channel) {
         Map params = new HashMap(1);
 
         params.put("channel", channel);
 
-        return queryExecutor.executeNamedQuery("salesRevenueAndCount", params, Object.class, pageable);
+        return queryExecutor.executeNamedQuery("leadsByChannel", params, Object.class, pageable);
     }
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
     @Override
-    public Page<Object> executeEachRepCustomerWiseSales(Pageable pageable, Integer id) {
-        Map params = new HashMap(1);
-
-        params.put("id", id);
-
-        return queryExecutor.executeNamedQuery("eachRepCustomerWiseSales", params, Object.class, pageable);
-    }
-
-    @Transactional(readOnly = true, value = "salesdbTransactionManager")
-    @Override
-    public Page<Object> executeWeeklyConverted(Pageable pageable, Integer year, Integer month) {
+    public Page<Object> executeCustomersRatio(Pageable pageable, Integer year, Integer month) {
         Map params = new HashMap(2);
 
         params.put("year", year);
         params.put("month", month);
 
-        return queryExecutor.executeNamedQuery("weeklyConverted", params, Object.class, pageable);
-    }
-
-    @Transactional(readOnly = true, value = "salesdbTransactionManager")
-    @Override
-    public Page<Object> executeWeeklyFollowUps(Pageable pageable, Integer year, Integer month) {
-        Map params = new HashMap(2);
-
-        params.put("year", year);
-        params.put("month", month);
-
-        return queryExecutor.executeNamedQuery("weeklyFollowUps", params, Object.class, pageable);
+        return queryExecutor.executeNamedQuery("customersRatio", params, Object.class, pageable);
     }
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
@@ -169,13 +107,34 @@ public class SalesdbQueryExecutorServiceImpl_V1 implements SalesdbQueryExecutorS
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
     @Override
-    public Page<Object> executeWeeklyLeads(Pageable pageable, Integer year, Integer month) {
+    public Page<Object> executeTopTrendingProducts(Pageable pageable, Integer year, Integer month) {
         Map params = new HashMap(2);
 
         params.put("year", year);
         params.put("month", month);
 
-        return queryExecutor.executeNamedQuery("weeklyLeads", params, Object.class, pageable);
+        return queryExecutor.executeNamedQuery("topTrendingProducts", params, Object.class, pageable);
+    }
+
+    @Transactional(readOnly = true, value = "salesdbTransactionManager")
+    @Override
+    public Page<Object> executeWeeklyConverted(Pageable pageable, Integer year, Integer month) {
+        Map params = new HashMap(2);
+
+        params.put("year", year);
+        params.put("month", month);
+
+        return queryExecutor.executeNamedQuery("weeklyConverted", params, Object.class, pageable);
+    }
+
+    @Transactional(readOnly = true, value = "salesdbTransactionManager")
+    @Override
+    public Page<Object> executeRepsCount(Pageable pageable, Integer channel) {
+        Map params = new HashMap(1);
+
+        params.put("channel", channel);
+
+        return queryExecutor.executeNamedQuery("repsCount", params, Object.class, pageable);
     }
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
@@ -191,13 +150,54 @@ public class SalesdbQueryExecutorServiceImpl_V1 implements SalesdbQueryExecutorS
 
     @Transactional(readOnly = true, value = "salesdbTransactionManager")
     @Override
-    public Page<Object> executeTopTrendingProducts(Pageable pageable, Integer year, Integer month) {
+    public Page<Object> executeWeeklyLeads(Pageable pageable, Integer year, Integer month) {
         Map params = new HashMap(2);
 
         params.put("year", year);
         params.put("month", month);
 
-        return queryExecutor.executeNamedQuery("topTrendingProducts", params, Object.class, pageable);
+        return queryExecutor.executeNamedQuery("weeklyLeads", params, Object.class, pageable);
+    }
+
+    @Transactional(readOnly = true, value = "salesdbTransactionManager")
+    @Override
+    public Page<Object> executeEachRepCustomerWiseSales(Pageable pageable, Integer id) {
+        Map params = new HashMap(1);
+
+        params.put("id", id);
+
+        return queryExecutor.executeNamedQuery("eachRepCustomerWiseSales", params, Object.class, pageable);
+    }
+
+    @Transactional(readOnly = true, value = "salesdbTransactionManager")
+    @Override
+    public Page<Object> executeSalesByReps(Pageable pageable, Integer channel) {
+        Map params = new HashMap(1);
+
+        params.put("channel", channel);
+
+        return queryExecutor.executeNamedQuery("salesByReps", params, Object.class, pageable);
+    }
+
+    @Transactional(readOnly = true, value = "salesdbTransactionManager")
+    @Override
+    public Page<Object> executeSalesRevenueAndCount(Pageable pageable, Integer channel) {
+        Map params = new HashMap(1);
+
+        params.put("channel", channel);
+
+        return queryExecutor.executeNamedQuery("salesRevenueAndCount", params, Object.class, pageable);
+    }
+
+    @Transactional(readOnly = true, value = "salesdbTransactionManager")
+    @Override
+    public Page<Object> executeWeeklyFollowUps(Pageable pageable, Integer year, Integer month) {
+        Map params = new HashMap(2);
+
+        params.put("year", year);
+        params.put("month", month);
+
+        return queryExecutor.executeNamedQuery("weeklyFollowUps", params, Object.class, pageable);
     }
 
 }

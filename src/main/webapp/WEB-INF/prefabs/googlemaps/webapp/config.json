@@ -32,6 +32,18 @@
       "displayName": "Map Type",
       "helpText": "This property allows you to set the map type."
     },
+    "viewtype": {
+      "type": "list",
+      "value": "TERRAIN",
+      "options": [
+        "TERRAIN",
+        "SATELLITE",
+        "ROADMAP",
+        "HYBRID"
+      ],
+      "displayName": "View Type",
+      "helpText": "This property allows you to set the view type of the map."
+    },
     "locations": {
       "bindable": "in-bound",
       "type": "array,object",

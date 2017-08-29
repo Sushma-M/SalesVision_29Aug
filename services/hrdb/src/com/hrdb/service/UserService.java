@@ -5,6 +5,8 @@ package com.hrdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -29,7 +31,7 @@ public interface UserService {
      * @param user Details of the User to be created; value cannot be null.
      * @return The newly created User.
      */
-	User create(User user);
+	User create(@Valid User user);
 
 
 	/**
@@ -59,7 +61,7 @@ public interface UserService {
 	 * @return The updated User.
 	 * @throws EntityNotFoundException if no User is found with given input.
 	 */
-	User update(User user) throws EntityNotFoundException;
+	User update(@Valid User user) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing User with the given id.

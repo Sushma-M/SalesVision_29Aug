@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -30,7 +32,7 @@ public interface LeadsService {
      * @param leads Details of the Leads to be created; value cannot be null.
      * @return The newly created Leads.
      */
-	Leads create(Leads leads);
+	Leads create(@Valid Leads leads);
 
 
 	/**
@@ -60,7 +62,7 @@ public interface LeadsService {
 	 * @return The updated Leads.
 	 * @throws EntityNotFoundException if no Leads is found with given input.
 	 */
-	Leads update(Leads leads) throws EntityNotFoundException;
+	Leads update(@Valid Leads leads) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Leads with the given id.

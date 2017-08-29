@@ -7,6 +7,8 @@ package com.hrdb.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,7 @@ public class QueryExecutionController {
     @RequestMapping(value = "/queries/empCount", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "No description is provided")
-    public Page<EmpCountResponse> executeEmpCount(Pageable pageable) {
+    public Page<EmpCountResponse> executeEmpCount(Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: empCount");
         Page<EmpCountResponse> _result = queryService.executeEmpCount(pageable);
         LOGGER.debug("got the result for named query: empCount, result:{}", _result);
@@ -54,7 +56,7 @@ public class QueryExecutionController {
     @ApiOperation(value = "Returns downloadable file for query empCount")
     @RequestMapping(value = "/queries/empCount/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportEmpCount(@PathVariable("exportType") ExportType exportType, Pageable pageable) {
+    public Downloadable exportEmpCount(@PathVariable("exportType") ExportType exportType, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Exporting named query: empCount");
 
         return queryService.exportEmpCount(exportType, pageable);

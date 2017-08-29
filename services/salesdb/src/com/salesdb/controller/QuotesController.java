@@ -52,9 +52,9 @@ public class QuotesController {
 	private QuotesService quotesService;
 
 	@ApiOperation(value = "Creates a new Quotes instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Quotes createQuotes(@RequestBody Quotes quotes) {
+public Quotes createQuotes(@RequestBody Quotes quotes) {
 		LOGGER.debug("Create Quotes with information: {}" , quotes);
 
 		quotes = quotesService.create(quotes);
@@ -62,7 +62,6 @@ public class QuotesController {
 
 	    return quotes;
 	}
-
 
     @ApiOperation(value = "Returns the Quotes instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
@@ -151,15 +150,6 @@ public class QuotesController {
         return quotesService.getAggregatedValues(aggregationInfo, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/followUpses", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the followUpses instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<FollowUps> findAssociatedFollowUpses(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated followUpses");
-        return quotesService.findAssociatedFollowUpses(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/saleses", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the saleses instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -167,6 +157,15 @@ public class QuotesController {
 
         LOGGER.debug("Fetching all associated saleses");
         return quotesService.findAssociatedSaleses(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/followUpses", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the followUpses instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<FollowUps> findAssociatedFollowUpses(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated followUpses");
+        return quotesService.findAssociatedFollowUpses(id, pageable);
     }
 
     /**

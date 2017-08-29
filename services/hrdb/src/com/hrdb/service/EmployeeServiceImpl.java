@@ -9,10 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
@@ -31,10 +33,12 @@ import com.hrdb.Vacation;
  * @see Employee
  */
 @Service("hrdb.EmployeeService")
+@Validated
 public class EmployeeServiceImpl implements EmployeeService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeServiceImpl.class);
 
+    @Lazy
     @Autowired
 	@Qualifier("hrdb.VacationService")
 	private VacationService vacationService;
@@ -52,19 +56,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee create(Employee employee) {
         LOGGER.debug("Creating a new Employee with information: {}", employee);
         Employee employeeCreated = this.wmGenericDao.create(employee);
-        if(employeeCreated.getEmployeesForManagerid() != null) {
-            for(Employee employeesForManagerid : employeeCreated.getEmployeesForManagerid()) {
-                employeesForManagerid.setEmployeeByManagerid(employeeCreated);
-                LOGGER.debug("Creating a new child Employee with information: {}", employeesForManagerid);
-                create(employeesForManagerid);
-            }
-        }
-
         if(employeeCreated.getVacations() != null) {
             for(Vacation vacation : employeeCreated.getVacations()) {
                 vacation.setEmployee(employeeCreated);
                 LOGGER.debug("Creating a new child Vacation with information: {}", vacation);
                 vacationService.create(vacation);
+            }
+        }
+
+        if(employeeCreated.getEmployeesForManagerid() != null) {
+            for(Employee employeesForManagerid : employeeCreated.getEmployeesForManagerid()) {
+                employeesForManagerid.setEmployeeByManagerid(employeeCreated);
+                LOGGER.debug("Creating a new child Employee with information: {}", employeesForManagerid);
+                create(employeesForManagerid);
             }
         }
         return employeeCreated;
@@ -149,17 +153,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional(readOnly = true, value = "hrdbTransactionManager")
     @Override
-    public Page<Employee> findAssociatedEmployeesForManagerid(Integer eid, Pageable pageable) {
-        LOGGER.debug("Fetching all associated employeesForManagerid");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("employeeByManagerid.eid = '" + eid + "'");
-
-        return findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "hrdbTransactionManager")
-    @Override
     public Page<Vacation> findAssociatedVacations(Integer eid, Pageable pageable) {
         LOGGER.debug("Fetching all associated vacations");
 
@@ -167,6 +160,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         queryBuilder.append("employee.eid = '" + eid + "'");
 
         return vacationService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "hrdbTransactionManager")
+    @Override
+    public Page<Employee> findAssociatedEmployeesForManagerid(Integer eid, Pageable pageable) {
+        LOGGER.debug("Fetching all associated employeesForManagerid");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("employeeByManagerid.eid = '" + eid + "'");
+
+        return findAll(queryBuilder.toString(), pageable);
     }
 
     /**

@@ -50,9 +50,9 @@ public class Table3Controller {
 	private Table3Service table3Service;
 
 	@ApiOperation(value = "Creates a new Table3 instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Table3 createTable3(@RequestBody Table3 table3) {
+public Table3 createTable3(@RequestBody Table3 table3) {
 		LOGGER.debug("Create Table3 with information: {}" , table3);
 
 		table3 = table3Service.create(table3);
@@ -60,7 +60,6 @@ public class Table3Controller {
 
 	    return table3;
 	}
-
 
     @ApiOperation(value = "Returns the Table3 instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

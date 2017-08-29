@@ -31,7 +31,6 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 import com.salesvision2_0.mytestdatabase.City;
-import com.salesvision2_0.mytestdatabase.Personnel;
 import com.salesvision2_0.mytestdatabase.service.CityService;
 
 
@@ -51,9 +50,9 @@ public class CityController {
 	private CityService cityService;
 
 	@ApiOperation(value = "Creates a new City instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public City createCity(@RequestBody City cityInstance) {
+public City createCity(@RequestBody City cityInstance) {
 		LOGGER.debug("Create City with information: {}" , cityInstance);
 
 		cityInstance = cityService.create(cityInstance);
@@ -61,7 +60,6 @@ public class CityController {
 
 	    return cityInstance;
 	}
-
 
     @ApiOperation(value = "Returns the City instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
@@ -150,14 +148,6 @@ public class CityController {
         return cityService.getAggregatedValues(aggregationInfo, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/personnels", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the personnels instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Personnel> findAssociatedPersonnels(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated personnels");
-        return cityService.findAssociatedPersonnels(id, pageable);
-    }
 
     /**
 	 * This setter method should only be used by unit tests

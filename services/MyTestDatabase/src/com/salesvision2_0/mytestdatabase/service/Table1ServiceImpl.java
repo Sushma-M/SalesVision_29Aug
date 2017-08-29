@@ -9,10 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
@@ -22,6 +24,7 @@ import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.salesvision2_0.mytestdatabase.Table1;
+import com.salesvision2_0.mytestdatabase.Table2;
 
 
 /**
@@ -30,10 +33,15 @@ import com.salesvision2_0.mytestdatabase.Table1;
  * @see Table1
  */
 @Service("MyTestDatabase.Table1Service")
+@Validated
 public class Table1ServiceImpl implements Table1Service {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Table1ServiceImpl.class);
 
+    @Lazy
+    @Autowired
+	@Qualifier("MyTestDatabase.Table2Service")
+	private Table2Service table2Service;
 
     @Autowired
     @Qualifier("MyTestDatabase.Table1Dao")
@@ -48,6 +56,12 @@ public class Table1ServiceImpl implements Table1Service {
 	public Table1 create(Table1 table1) {
         LOGGER.debug("Creating a new Table1 with information: {}", table1);
         Table1 table1Created = this.wmGenericDao.create(table1);
+        if(table1Created.getTable2() != null) {
+            Table2 table2 = table1Created.getTable2();
+            LOGGER.debug("Creating a new child Table2 with information: {}", table2);
+            table2.setTable1(table1Created);
+            table2Service.create(table2);
+        }
         return table1Created;
     }
 
@@ -129,6 +143,14 @@ public class Table1ServiceImpl implements Table1Service {
     }
 
 
+    /**
+	 * This setter method should only be used by unit tests
+	 *
+	 * @param service Table2Service instance
+	 */
+	protected void setTable2Service(Table2Service service) {
+        this.table2Service = service;
+    }
 
 }
 

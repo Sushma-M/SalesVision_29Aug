@@ -5,6 +5,8 @@ package com.salesvision2_0.mytestdatabase.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,7 +17,6 @@ import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.salesvision2_0.mytestdatabase.City;
-import com.salesvision2_0.mytestdatabase.Personnel;
 
 /**
  * Service object for domain model class {@link City}.
@@ -30,7 +31,7 @@ public interface CityService {
      * @param cityInstance Details of the City to be created; value cannot be null.
      * @return The newly created City.
      */
-	City create(City cityInstance);
+	City create(@Valid City cityInstance);
 
 
 	/**
@@ -60,7 +61,7 @@ public interface CityService {
 	 * @return The updated City.
 	 * @throws EntityNotFoundException if no City is found with given input.
 	 */
-	City update(City cityInstance) throws EntityNotFoundException;
+	City update(@Valid City cityInstance) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing City with the given id.
@@ -139,17 +140,6 @@ public interface CityService {
 	 */
 	Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
-    /*
-     * Returns the associated personnels for given City id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Personnel instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<Personnel> findAssociatedPersonnels(Integer id, Pageable pageable);
 
 }
 

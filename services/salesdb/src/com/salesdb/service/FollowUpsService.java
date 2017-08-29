@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -29,7 +31,7 @@ public interface FollowUpsService {
      * @param followUps Details of the FollowUps to be created; value cannot be null.
      * @return The newly created FollowUps.
      */
-	FollowUps create(FollowUps followUps);
+	FollowUps create(@Valid FollowUps followUps);
 
 
 	/**
@@ -59,7 +61,7 @@ public interface FollowUpsService {
 	 * @return The updated FollowUps.
 	 * @throws EntityNotFoundException if no FollowUps is found with given input.
 	 */
-	FollowUps update(FollowUps followUps) throws EntityNotFoundException;
+	FollowUps update(@Valid FollowUps followUps) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing FollowUps with the given id.

@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -29,7 +31,7 @@ public interface TasksService {
      * @param tasks Details of the Tasks to be created; value cannot be null.
      * @return The newly created Tasks.
      */
-	Tasks create(Tasks tasks);
+	Tasks create(@Valid Tasks tasks);
 
 
 	/**
@@ -59,7 +61,7 @@ public interface TasksService {
 	 * @return The updated Tasks.
 	 * @throws EntityNotFoundException if no Tasks is found with given input.
 	 */
-	Tasks update(Tasks tasks) throws EntityNotFoundException;
+	Tasks update(@Valid Tasks tasks) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Tasks with the given id.

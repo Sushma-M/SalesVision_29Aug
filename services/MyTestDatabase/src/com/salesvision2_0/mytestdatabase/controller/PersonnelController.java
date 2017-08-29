@@ -50,9 +50,9 @@ public class PersonnelController {
 	private PersonnelService personnelService;
 
 	@ApiOperation(value = "Creates a new Personnel instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Personnel createPersonnel(@RequestBody Personnel personnel) {
+public Personnel createPersonnel(@RequestBody Personnel personnel) {
 		LOGGER.debug("Create Personnel with information: {}" , personnel);
 
 		personnel = personnelService.create(personnel);
@@ -60,7 +60,6 @@ public class PersonnelController {
 
 	    return personnel;
 	}
-
 
     @ApiOperation(value = "Returns the Personnel instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

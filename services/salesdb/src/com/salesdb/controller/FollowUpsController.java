@@ -50,9 +50,9 @@ public class FollowUpsController {
 	private FollowUpsService followUpsService;
 
 	@ApiOperation(value = "Creates a new FollowUps instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public FollowUps createFollowUps(@RequestBody FollowUps followUps) {
+public FollowUps createFollowUps(@RequestBody FollowUps followUps) {
 		LOGGER.debug("Create FollowUps with information: {}" , followUps);
 
 		followUps = followUpsService.create(followUps);
@@ -60,7 +60,6 @@ public class FollowUpsController {
 
 	    return followUps;
 	}
-
 
     @ApiOperation(value = "Returns the FollowUps instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

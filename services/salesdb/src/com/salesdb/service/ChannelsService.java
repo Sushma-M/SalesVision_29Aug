@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -30,7 +32,7 @@ public interface ChannelsService {
      * @param channels Details of the Channels to be created; value cannot be null.
      * @return The newly created Channels.
      */
-	Channels create(Channels channels);
+	Channels create(@Valid Channels channels);
 
 
 	/**
@@ -60,7 +62,7 @@ public interface ChannelsService {
 	 * @return The updated Channels.
 	 * @throws EntityNotFoundException if no Channels is found with given input.
 	 */
-	Channels update(Channels channels) throws EntityNotFoundException;
+	Channels update(@Valid Channels channels) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Channels with the given id.

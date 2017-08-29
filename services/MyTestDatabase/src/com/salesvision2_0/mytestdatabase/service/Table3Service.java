@@ -5,6 +5,8 @@ package com.salesvision2_0.mytestdatabase.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -29,7 +31,7 @@ public interface Table3Service {
      * @param table3 Details of the Table3 to be created; value cannot be null.
      * @return The newly created Table3.
      */
-	Table3 create(Table3 table3);
+	Table3 create(@Valid Table3 table3);
 
 
 	/**
@@ -59,7 +61,7 @@ public interface Table3Service {
 	 * @return The updated Table3.
 	 * @throws EntityNotFoundException if no Table3 is found with given input.
 	 */
-	Table3 update(Table3 table3) throws EntityNotFoundException;
+	Table3 update(@Valid Table3 table3) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Table3 with the given id.

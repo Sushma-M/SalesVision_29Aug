@@ -8,12 +8,9 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,9 +21,8 @@ import javax.persistence.Table;
 public class Personnel implements Serializable {
 
     private Integer id;
-    private String name;
     private Integer cityCode;
-    private City city;
+    private String name;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,15 +35,6 @@ public class Personnel implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "`Name`", nullable = true, length = 15)
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Column(name = "`City_code`", nullable = true, scale = 0, precision = 10)
     public Integer getCityCode() {
         return this.cityCode;
@@ -57,19 +44,15 @@ public class Personnel implements Serializable {
         this.cityCode = cityCode;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`City_code`", referencedColumnName = "`ID`", insertable = false, updatable = false)
-    public City getCity() {
-        return this.city;
+    @Column(name = "`Name`", nullable = true, length = 15)
+    public String getName() {
+        return this.name;
     }
 
-    public void setCity(City city) {
-        if(city != null) {
-            this.cityCode = city.getId();
-        }
-
-        this.city = city;
+    public void setName(String name) {
+        this.name = name;
     }
+
 
     @Override
     public boolean equals(Object o) {

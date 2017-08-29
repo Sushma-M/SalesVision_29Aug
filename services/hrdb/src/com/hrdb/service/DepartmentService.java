@@ -5,6 +5,8 @@ package com.hrdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -30,7 +32,7 @@ public interface DepartmentService {
      * @param department Details of the Department to be created; value cannot be null.
      * @return The newly created Department.
      */
-	Department create(Department department);
+	Department create(@Valid Department department);
 
 
 	/**
@@ -60,7 +62,7 @@ public interface DepartmentService {
 	 * @return The updated Department.
 	 * @throws EntityNotFoundException if no Department is found with given input.
 	 */
-	Department update(Department department) throws EntityNotFoundException;
+	Department update(@Valid Department department) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Department with the given id.

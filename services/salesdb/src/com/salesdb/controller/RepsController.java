@@ -52,9 +52,9 @@ public class RepsController {
 	private RepsService repsService;
 
 	@ApiOperation(value = "Creates a new Reps instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Reps createReps(@RequestBody Reps reps) {
+public Reps createReps(@RequestBody Reps reps) {
 		LOGGER.debug("Create Reps with information: {}" , reps);
 
 		reps = repsService.create(reps);
@@ -62,7 +62,6 @@ public class RepsController {
 
 	    return reps;
 	}
-
 
     @ApiOperation(value = "Returns the Reps instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

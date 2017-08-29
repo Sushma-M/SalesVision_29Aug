@@ -5,6 +5,8 @@ package com.salesvision2_0.mytestdatabase.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -29,7 +31,7 @@ public interface Table1Service {
      * @param table1 Details of the Table1 to be created; value cannot be null.
      * @return The newly created Table1.
      */
-	Table1 create(Table1 table1);
+	Table1 create(@Valid Table1 table1);
 
 
 	/**
@@ -59,7 +61,7 @@ public interface Table1Service {
 	 * @return The updated Table1.
 	 * @throws EntityNotFoundException if no Table1 is found with given input.
 	 */
-	Table1 update(Table1 table1) throws EntityNotFoundException;
+	Table1 update(@Valid Table1 table1) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Table1 with the given id.

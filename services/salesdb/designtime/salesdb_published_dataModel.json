@@ -7,262 +7,12 @@
     "catalog" : "PUBLIC",
     "columns" : [ {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
-      "fieldName" : "id",
-      "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : null,
-      "javaType" : "integer",
-      "length" : 255,
-      "name" : "ID",
-      "nullable" : false,
-      "oldName" : "ID",
-      "partOfAnyRelation" : true,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : true,
-      "partOfUniqueKey" : true,
-      "precision" : 10,
-      "primaryKey" : true,
-      "scale" : 0,
-      "sequenceSchema" : null,
-      "sqlType" : "number",
-      "unique" : true
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "name",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 32,
-      "name" : "NAME",
-      "nullable" : false,
-      "oldName" : "NAME",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "stateId",
-      "foreignKey" : true,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "integer",
-      "length" : 255,
-      "name" : "STATE_ID",
-      "nullable" : true,
-      "oldName" : "STATE_ID",
-      "partOfAnyRelation" : true,
-      "partOfForeignKey" : true,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 10,
-      "primaryKey" : false,
-      "scale" : 0,
-      "sequenceSchema" : null,
-      "sqlType" : "number",
-      "unique" : false
-    } ],
-    "constraints" : [ ],
-    "entityName" : "Customers",
-    "fullyQualifiedName" : "com.salesdb.Customers",
-    "name" : "CUSTOMERS",
-    "oldName" : "CUSTOMERS",
-    "primaryKey" : {
-      "columns" : [ "ID" ],
-      "composite" : false,
-      "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : null,
-        "schemaName" : null
-      },
-      "name" : "SYS_PK_10106",
-      "virtual" : false
-    },
-    "relations" : [ {
-      "cardinality" : "ManyToOne",
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fieldName" : "states",
-      "mappings" : [ {
-        "sourceColumn" : "STATE_ID",
-        "targetColumn" : "ID"
-      } ],
-      "name" : "FK_CUSTOMER_STATE_ID",
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "CUSTOMERS",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "STATES",
-      "virtual" : false
-    }, {
-      "cardinality" : "OneToMany",
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fieldName" : "leadses",
-      "mappings" : [ {
-        "sourceColumn" : "ID",
-        "targetColumn" : "CUSTOMER_ID"
-      } ],
-      "name" : "FK_LEAD_CUSTOMER_ID",
-      "primary" : false,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "CUSTOMERS",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "LEADS",
-      "virtual" : false
-    } ],
-    "schema" : "PUBLIC",
-    "type" : "TABLE"
-  }, {
-    "catalog" : "PUBLIC",
-    "columns" : [ {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "id",
-      "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : null,
-      "javaType" : "integer",
-      "length" : 255,
-      "name" : "ID",
-      "nullable" : false,
-      "oldName" : "ID",
-      "partOfAnyRelation" : true,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : true,
-      "partOfUniqueKey" : true,
-      "precision" : 10,
-      "primaryKey" : true,
-      "scale" : 0,
-      "sequenceSchema" : null,
-      "sqlType" : "number",
-      "unique" : true
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "name",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 40,
-      "name" : "NAME",
-      "nullable" : false,
-      "oldName" : "NAME",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "abbrev",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 2,
-      "name" : "ABBREV",
-      "nullable" : false,
-      "oldName" : "ABBREV",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    } ],
-    "constraints" : [ ],
-    "entityName" : "States",
-    "fullyQualifiedName" : "com.salesdb.States",
-    "name" : "STATES",
-    "oldName" : "STATES",
-    "primaryKey" : {
-      "columns" : [ "ID" ],
-      "composite" : false,
-      "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : null,
-        "schemaName" : null
-      },
-      "name" : "SYS_PK_10098",
-      "virtual" : false
-    },
-    "relations" : [ {
-      "cardinality" : "OneToMany",
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fieldName" : "customerses",
-      "mappings" : [ {
-        "sourceColumn" : "ID",
-        "targetColumn" : "STATE_ID"
-      } ],
-      "name" : "FK_CUSTOMER_STATE_ID",
-      "primary" : false,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "STATES",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "CUSTOMERS",
-      "virtual" : false
-    } ],
-    "schema" : "PUBLIC",
-    "type" : "TABLE"
-  }, {
-    "catalog" : "PUBLIC",
-    "columns" : [ {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
+      "constraintList" : null,
       "fieldName" : "id",
       "foreignKey" : false,
       "generatorType" : "identity",
@@ -284,219 +34,12 @@
       "unique" : true
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
-      "fieldName" : "quoteId",
-      "foreignKey" : true,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "integer",
-      "length" : 255,
-      "name" : "QUOTE_ID",
-      "nullable" : true,
-      "oldName" : "QUOTE_ID",
-      "partOfAnyRelation" : true,
-      "partOfForeignKey" : true,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 10,
-      "primaryKey" : false,
-      "scale" : 0,
-      "sequenceSchema" : null,
-      "sqlType" : "number",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "entryDate",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "date",
-      "length" : 10,
-      "name" : "ENTRY_DATE",
-      "nullable" : false,
-      "oldName" : "ENTRY_DATE",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "date",
-      "unique" : false
-    } ],
-    "constraints" : [ ],
-    "entityName" : "FollowUps",
-    "fullyQualifiedName" : "com.salesdb.FollowUps",
-    "name" : "FOLLOW_UPS",
-    "oldName" : "FOLLOW_UPS",
-    "primaryKey" : {
-      "columns" : [ "ID" ],
-      "composite" : false,
-      "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : null,
-        "schemaName" : null
-      },
-      "name" : "SYS_PK_10144",
-      "virtual" : false
-    },
-    "relations" : [ {
-      "cardinality" : "ManyToOne",
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fieldName" : "quotes",
-      "mappings" : [ {
-        "sourceColumn" : "QUOTE_ID",
-        "targetColumn" : "ID"
-      } ],
-      "name" : "FK_FOLLOW_UP_QUOTE_ID",
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "FOLLOW_UPS",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "QUOTES",
-      "virtual" : false
-    } ],
-    "schema" : "PUBLIC",
-    "type" : "TABLE"
-  }, {
-    "catalog" : "PUBLIC",
-    "columns" : [ {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "id",
-      "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : null,
-      "javaType" : "integer",
-      "length" : 255,
-      "name" : "ID",
-      "nullable" : false,
-      "oldName" : "ID",
-      "partOfAnyRelation" : true,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : true,
-      "partOfUniqueKey" : true,
-      "precision" : 10,
-      "primaryKey" : true,
-      "scale" : 0,
-      "sequenceSchema" : null,
-      "sqlType" : "number",
-      "unique" : true
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "name",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 40,
-      "name" : "NAME",
-      "nullable" : false,
-      "oldName" : "NAME",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    } ],
-    "constraints" : [ ],
-    "entityName" : "Channels",
-    "fullyQualifiedName" : "com.salesdb.Channels",
-    "name" : "CHANNELS",
-    "oldName" : "CHANNELS",
-    "primaryKey" : {
-      "columns" : [ "ID" ],
-      "composite" : false,
-      "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : null,
-        "schemaName" : null
-      },
-      "name" : "SYS_PK_10092",
-      "virtual" : false
-    },
-    "relations" : [ {
-      "cardinality" : "OneToMany",
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fieldName" : "repses",
-      "mappings" : [ {
-        "sourceColumn" : "ID",
-        "targetColumn" : "CHANNEL_TYPE"
-      } ],
-      "name" : "FK_REP_CHANNEL_TYPE",
-      "primary" : false,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "CHANNELS",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "REPS",
-      "virtual" : false
-    } ],
-    "schema" : "PUBLIC",
-    "type" : "TABLE"
-  }, {
-    "catalog" : "PUBLIC",
-    "columns" : [ {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "id",
-      "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : null,
-      "javaType" : "integer",
-      "length" : 255,
-      "name" : "ID",
-      "nullable" : false,
-      "oldName" : "ID",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : true,
-      "partOfUniqueKey" : true,
-      "precision" : 10,
-      "primaryKey" : true,
-      "scale" : 0,
-      "sequenceSchema" : null,
-      "sqlType" : "number",
-      "unique" : true
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
+      "constraintList" : null,
       "fieldName" : "entryDate",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -518,11 +61,12 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "quoteId",
       "foreignKey" : true,
       "generatorType" : "assigned",
@@ -544,11 +88,12 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "productId",
       "foreignKey" : true,
       "generatorType" : "assigned",
@@ -570,11 +115,12 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "sales",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -596,11 +142,12 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "isRenewal",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -678,11 +225,448 @@
     "catalog" : "PUBLIC",
     "columns" : [ {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
+      "fieldName" : "id",
+      "foreignKey" : false,
+      "generatorType" : "identity",
+      "generatorValue" : null,
+      "javaType" : "integer",
+      "length" : 255,
+      "name" : "ID",
+      "nullable" : false,
+      "oldName" : "ID",
+      "partOfAnyRelation" : true,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : true,
+      "partOfUniqueKey" : true,
+      "precision" : 10,
+      "primaryKey" : true,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : true
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "name",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 40,
+      "name" : "NAME",
+      "nullable" : false,
+      "oldName" : "NAME",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    } ],
+    "constraints" : [ ],
+    "entityName" : "Channels",
+    "fullyQualifiedName" : "com.salesdb.Channels",
+    "name" : "CHANNELS",
+    "oldName" : "CHANNELS",
+    "primaryKey" : {
+      "columns" : [ "ID" ],
+      "composite" : false,
+      "generator" : {
+        "generatorType" : "identity",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "name" : "SYS_PK_10092",
+      "virtual" : false
+    },
+    "relations" : [ {
+      "cardinality" : "OneToMany",
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fieldName" : "repses",
+      "mappings" : [ {
+        "sourceColumn" : "ID",
+        "targetColumn" : "CHANNEL_TYPE"
+      } ],
+      "name" : "FK_REP_CHANNEL_TYPE",
+      "primary" : false,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "CHANNELS",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "REPS",
+      "virtual" : false
+    } ],
+    "schema" : "PUBLIC",
+    "type" : "TABLE"
+  }, {
+    "catalog" : "PUBLIC",
+    "columns" : [ {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "id",
+      "foreignKey" : false,
+      "generatorType" : "identity",
+      "generatorValue" : null,
+      "javaType" : "integer",
+      "length" : 255,
+      "name" : "ID",
+      "nullable" : false,
+      "oldName" : "ID",
+      "partOfAnyRelation" : true,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : true,
+      "partOfUniqueKey" : true,
+      "precision" : 10,
+      "primaryKey" : true,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : true
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "name",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 32,
+      "name" : "NAME",
+      "nullable" : false,
+      "oldName" : "NAME",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "channelType",
+      "foreignKey" : true,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "integer",
+      "length" : 255,
+      "name" : "CHANNEL_TYPE",
+      "nullable" : true,
+      "oldName" : "CHANNEL_TYPE",
+      "partOfAnyRelation" : true,
+      "partOfForeignKey" : true,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 10,
+      "primaryKey" : false,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "street",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 64,
+      "name" : "STREET",
+      "nullable" : true,
+      "oldName" : "STREET",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "city",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 32,
+      "name" : "CITY",
+      "nullable" : true,
+      "oldName" : "CITY",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "state",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 2,
+      "name" : "STATE",
+      "nullable" : true,
+      "oldName" : "STATE",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "zip",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 6,
+      "name" : "ZIP",
+      "nullable" : true,
+      "oldName" : "ZIP",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "picurl",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 1024,
+      "name" : "PICURL",
+      "nullable" : true,
+      "oldName" : "PICURL",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "password",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 32,
+      "name" : "PASSWORD",
+      "nullable" : true,
+      "oldName" : "PASSWORD",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "role",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 32,
+      "name" : "ROLE",
+      "nullable" : true,
+      "oldName" : "ROLE",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    } ],
+    "constraints" : [ ],
+    "entityName" : "Reps",
+    "fullyQualifiedName" : "com.salesdb.Reps",
+    "name" : "REPS",
+    "oldName" : "REPS",
+    "primaryKey" : {
+      "columns" : [ "ID" ],
+      "composite" : false,
+      "generator" : {
+        "generatorType" : "identity",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "name" : "SYS_PK_10114",
+      "virtual" : false
+    },
+    "relations" : [ {
+      "cardinality" : "ManyToOne",
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fieldName" : "channels",
+      "mappings" : [ {
+        "sourceColumn" : "CHANNEL_TYPE",
+        "targetColumn" : "ID"
+      } ],
+      "name" : "FK_REP_CHANNEL_TYPE",
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "REPS",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "CHANNELS",
+      "virtual" : false
+    }, {
+      "cardinality" : "OneToMany",
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fieldName" : "taskses",
+      "mappings" : [ {
+        "sourceColumn" : "ID",
+        "targetColumn" : "REP_ID"
+      } ],
+      "name" : "FK_BYCIJAABMA9A2AEHPR4RV9PMY",
+      "primary" : false,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "REPS",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "TASKS",
+      "virtual" : false
+    }, {
+      "cardinality" : "OneToMany",
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fieldName" : "quoteses",
+      "mappings" : [ {
+        "sourceColumn" : "ID",
+        "targetColumn" : "REP_ID"
+      } ],
+      "name" : "FK_QUOTES_REP_ID",
+      "primary" : false,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "REPS",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "QUOTES",
+      "virtual" : false
+    } ],
+    "schema" : "PUBLIC",
+    "type" : "TABLE"
+  }, {
+    "catalog" : "PUBLIC",
+    "columns" : [ {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
       "fieldName" : "id",
       "foreignKey" : false,
       "generatorType" : "identity",
@@ -704,11 +688,132 @@
       "unique" : true
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
+      "fieldName" : "quoteId",
+      "foreignKey" : true,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "integer",
+      "length" : 255,
+      "name" : "QUOTE_ID",
+      "nullable" : true,
+      "oldName" : "QUOTE_ID",
+      "partOfAnyRelation" : true,
+      "partOfForeignKey" : true,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 10,
+      "primaryKey" : false,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "entryDate",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "date",
+      "length" : 10,
+      "name" : "ENTRY_DATE",
+      "nullable" : false,
+      "oldName" : "ENTRY_DATE",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "date",
+      "unique" : false
+    } ],
+    "constraints" : [ ],
+    "entityName" : "FollowUps",
+    "fullyQualifiedName" : "com.salesdb.FollowUps",
+    "name" : "FOLLOW_UPS",
+    "oldName" : "FOLLOW_UPS",
+    "primaryKey" : {
+      "columns" : [ "ID" ],
+      "composite" : false,
+      "generator" : {
+        "generatorType" : "identity",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "name" : "SYS_PK_10144",
+      "virtual" : false
+    },
+    "relations" : [ {
+      "cardinality" : "ManyToOne",
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fieldName" : "quotes",
+      "mappings" : [ {
+        "sourceColumn" : "QUOTE_ID",
+        "targetColumn" : "ID"
+      } ],
+      "name" : "FK_FOLLOW_UP_QUOTE_ID",
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "FOLLOW_UPS",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "QUOTES",
+      "virtual" : false
+    } ],
+    "schema" : "PUBLIC",
+    "type" : "TABLE"
+  }, {
+    "catalog" : "PUBLIC",
+    "columns" : [ {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "id",
+      "foreignKey" : false,
+      "generatorType" : "identity",
+      "generatorValue" : null,
+      "javaType" : "integer",
+      "length" : 255,
+      "name" : "ID",
+      "nullable" : false,
+      "oldName" : "ID",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : true,
+      "partOfUniqueKey" : true,
+      "precision" : 10,
+      "primaryKey" : true,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : true
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
       "fieldName" : "description",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -730,11 +835,12 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "duedate",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -756,11 +862,12 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "done",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -782,11 +889,12 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "repId",
       "foreignKey" : true,
       "generatorType" : "assigned",
@@ -847,11 +955,12 @@
     "catalog" : "PUBLIC",
     "columns" : [ {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "id",
       "foreignKey" : false,
       "generatorType" : "identity",
@@ -873,20 +982,141 @@
       "unique" : true
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
-      "fieldName" : "leadId",
+      "constraintList" : null,
+      "fieldName" : "name",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 40,
+      "name" : "NAME",
+      "nullable" : false,
+      "oldName" : "NAME",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "abbrev",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "string",
+      "length" : 2,
+      "name" : "ABBREV",
+      "nullable" : false,
+      "oldName" : "ABBREV",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 19,
+      "primaryKey" : false,
+      "scale" : 2,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
+    } ],
+    "constraints" : [ ],
+    "entityName" : "States",
+    "fullyQualifiedName" : "com.salesdb.States",
+    "name" : "STATES",
+    "oldName" : "STATES",
+    "primaryKey" : {
+      "columns" : [ "ID" ],
+      "composite" : false,
+      "generator" : {
+        "generatorType" : "identity",
+        "generatorValue" : null,
+        "schemaName" : null
+      },
+      "name" : "SYS_PK_10098",
+      "virtual" : false
+    },
+    "relations" : [ {
+      "cardinality" : "OneToMany",
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fieldName" : "customerses",
+      "mappings" : [ {
+        "sourceColumn" : "ID",
+        "targetColumn" : "STATE_ID"
+      } ],
+      "name" : "FK_CUSTOMER_STATE_ID",
+      "primary" : false,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "STATES",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "CUSTOMERS",
+      "virtual" : false
+    } ],
+    "schema" : "PUBLIC",
+    "type" : "TABLE"
+  }, {
+    "catalog" : "PUBLIC",
+    "columns" : [ {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "id",
+      "foreignKey" : false,
+      "generatorType" : "identity",
+      "generatorValue" : null,
+      "javaType" : "integer",
+      "length" : 255,
+      "name" : "ID",
+      "nullable" : false,
+      "oldName" : "ID",
+      "partOfAnyRelation" : true,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : true,
+      "partOfUniqueKey" : true,
+      "precision" : 10,
+      "primaryKey" : true,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : true
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "customerId",
       "foreignKey" : true,
       "generatorType" : "assigned",
       "generatorValue" : null,
       "javaType" : "integer",
       "length" : 255,
-      "name" : "LEAD_ID",
+      "name" : "CUSTOMER_ID",
       "nullable" : true,
-      "oldName" : "LEAD_ID",
+      "oldName" : "CUSTOMER_ID",
       "partOfAnyRelation" : true,
       "partOfForeignKey" : true,
       "partOfPrimaryKey" : false,
@@ -899,11 +1129,12 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "entryDate",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -911,7 +1142,7 @@
       "javaType" : "date",
       "length" : 10,
       "name" : "ENTRY_DATE",
-      "nullable" : true,
+      "nullable" : false,
       "oldName" : "ENTRY_DATE",
       "partOfAnyRelation" : false,
       "partOfForeignKey" : false,
@@ -923,64 +1154,12 @@
       "sequenceSchema" : null,
       "sqlType" : "date",
       "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "repId",
-      "foreignKey" : true,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "integer",
-      "length" : 255,
-      "name" : "REP_ID",
-      "nullable" : true,
-      "oldName" : "REP_ID",
-      "partOfAnyRelation" : true,
-      "partOfForeignKey" : true,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 10,
-      "primaryKey" : false,
-      "scale" : 0,
-      "sequenceSchema" : null,
-      "sqlType" : "number",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "estimatedSale",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "integer",
-      "length" : 255,
-      "name" : "ESTIMATED_SALE",
-      "nullable" : true,
-      "oldName" : "ESTIMATED_SALE",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 10,
-      "primaryKey" : false,
-      "scale" : 0,
-      "sequenceSchema" : null,
-      "sqlType" : "number",
-      "unique" : false
     } ],
     "constraints" : [ ],
-    "entityName" : "Quotes",
-    "fullyQualifiedName" : "com.salesdb.Quotes",
-    "name" : "QUOTES",
-    "oldName" : "QUOTES",
+    "entityName" : "Leads",
+    "fullyQualifiedName" : "com.salesdb.Leads",
+    "name" : "LEADS",
+    "oldName" : "LEADS",
     "primaryKey" : {
       "columns" : [ "ID" ],
       "composite" : false,
@@ -989,76 +1168,42 @@
         "generatorValue" : null,
         "schemaName" : null
       },
-      "name" : "SYS_PK_10136",
+      "name" : "SYS_PK_10128",
       "virtual" : false
     },
     "relations" : [ {
-      "cardinality" : "OneToMany",
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fieldName" : "followUpses",
-      "mappings" : [ {
-        "sourceColumn" : "ID",
-        "targetColumn" : "QUOTE_ID"
-      } ],
-      "name" : "FK_FOLLOW_UP_QUOTE_ID",
-      "primary" : false,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "QUOTES",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "FOLLOW_UPS",
-      "virtual" : false
-    }, {
-      "cardinality" : "OneToMany",
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fieldName" : "saleses",
-      "mappings" : [ {
-        "sourceColumn" : "ID",
-        "targetColumn" : "QUOTE_ID"
-      } ],
-      "name" : "FK_SALES_QUOTE_ID",
-      "primary" : false,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "QUOTES",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "SALES",
-      "virtual" : false
-    }, {
       "cardinality" : "ManyToOne",
       "columnsUniqueKey" : false,
       "composite" : false,
-      "fieldName" : "reps",
+      "fieldName" : "customers",
       "mappings" : [ {
-        "sourceColumn" : "REP_ID",
+        "sourceColumn" : "CUSTOMER_ID",
         "targetColumn" : "ID"
       } ],
-      "name" : "FK_QUOTES_REP_ID",
+      "name" : "FK_LEAD_CUSTOMER_ID",
       "primary" : true,
       "selfRelation" : false,
       "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "QUOTES",
+      "sourceTable" : "LEADS",
       "targetColumnsUniqueKey" : false,
-      "targetTable" : "REPS",
+      "targetTable" : "CUSTOMERS",
       "virtual" : false
     }, {
-      "cardinality" : "ManyToOne",
+      "cardinality" : "OneToMany",
       "columnsUniqueKey" : false,
       "composite" : false,
-      "fieldName" : "leads",
+      "fieldName" : "quoteses",
       "mappings" : [ {
-        "sourceColumn" : "LEAD_ID",
-        "targetColumn" : "ID"
+        "sourceColumn" : "ID",
+        "targetColumn" : "LEAD_ID"
       } ],
       "name" : "FK_QUOTES_LEAD_ID",
-      "primary" : true,
+      "primary" : false,
       "selfRelation" : false,
       "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "QUOTES",
+      "sourceTable" : "LEADS",
       "targetColumnsUniqueKey" : false,
-      "targetTable" : "LEADS",
+      "targetTable" : "QUOTES",
       "virtual" : false
     } ],
     "schema" : "PUBLIC",
@@ -1067,11 +1212,12 @@
     "catalog" : "PUBLIC",
     "columns" : [ {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "id",
       "foreignKey" : false,
       "generatorType" : "identity",
@@ -1093,11 +1239,12 @@
       "unique" : true
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "name",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -1158,11 +1305,12 @@
     "catalog" : "PUBLIC",
     "columns" : [ {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "id",
       "foreignKey" : false,
       "generatorType" : "identity",
@@ -1184,11 +1332,12 @@
       "unique" : true
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "name",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -1210,20 +1359,21 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
-      "fieldName" : "channelType",
+      "constraintList" : null,
+      "fieldName" : "stateId",
       "foreignKey" : true,
       "generatorType" : "assigned",
       "generatorValue" : null,
       "javaType" : "integer",
       "length" : 255,
-      "name" : "CHANNEL_TYPE",
+      "name" : "STATE_ID",
       "nullable" : true,
-      "oldName" : "CHANNEL_TYPE",
+      "oldName" : "STATE_ID",
       "partOfAnyRelation" : true,
       "partOfForeignKey" : true,
       "partOfPrimaryKey" : false,
@@ -1234,194 +1384,12 @@
       "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "street",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 64,
-      "name" : "STREET",
-      "nullable" : true,
-      "oldName" : "STREET",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "city",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 32,
-      "name" : "CITY",
-      "nullable" : true,
-      "oldName" : "CITY",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "state",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 2,
-      "name" : "STATE",
-      "nullable" : true,
-      "oldName" : "STATE",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "zip",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 6,
-      "name" : "ZIP",
-      "nullable" : true,
-      "oldName" : "ZIP",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "picurl",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 1024,
-      "name" : "PICURL",
-      "nullable" : true,
-      "oldName" : "PICURL",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "password",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 32,
-      "name" : "PASSWORD",
-      "nullable" : true,
-      "oldName" : "PASSWORD",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "type" : "user-defined",
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : null
-      },
-      "fieldName" : "role",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "javaType" : "string",
-      "length" : 32,
-      "name" : "ROLE",
-      "nullable" : true,
-      "oldName" : "ROLE",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "precision" : 19,
-      "primaryKey" : false,
-      "scale" : 2,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
     } ],
     "constraints" : [ ],
-    "entityName" : "Reps",
-    "fullyQualifiedName" : "com.salesdb.Reps",
-    "name" : "REPS",
-    "oldName" : "REPS",
+    "entityName" : "Customers",
+    "fullyQualifiedName" : "com.salesdb.Customers",
+    "name" : "CUSTOMERS",
+    "oldName" : "CUSTOMERS",
     "primaryKey" : {
       "columns" : [ "ID" ],
       "composite" : false,
@@ -1430,59 +1398,42 @@
         "generatorValue" : null,
         "schemaName" : null
       },
-      "name" : "SYS_PK_10114",
+      "name" : "SYS_PK_10106",
       "virtual" : false
     },
     "relations" : [ {
       "cardinality" : "OneToMany",
       "columnsUniqueKey" : false,
       "composite" : false,
-      "fieldName" : "taskses",
+      "fieldName" : "leadses",
       "mappings" : [ {
         "sourceColumn" : "ID",
-        "targetColumn" : "REP_ID"
+        "targetColumn" : "CUSTOMER_ID"
       } ],
-      "name" : "FK_BYCIJAABMA9A2AEHPR4RV9PMY",
+      "name" : "FK_LEAD_CUSTOMER_ID",
       "primary" : false,
       "selfRelation" : false,
       "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "REPS",
+      "sourceTable" : "CUSTOMERS",
       "targetColumnsUniqueKey" : false,
-      "targetTable" : "TASKS",
-      "virtual" : false
-    }, {
-      "cardinality" : "OneToMany",
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fieldName" : "quoteses",
-      "mappings" : [ {
-        "sourceColumn" : "ID",
-        "targetColumn" : "REP_ID"
-      } ],
-      "name" : "FK_QUOTES_REP_ID",
-      "primary" : false,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "REPS",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "QUOTES",
+      "targetTable" : "LEADS",
       "virtual" : false
     }, {
       "cardinality" : "ManyToOne",
       "columnsUniqueKey" : false,
       "composite" : false,
-      "fieldName" : "channels",
+      "fieldName" : "states",
       "mappings" : [ {
-        "sourceColumn" : "CHANNEL_TYPE",
+        "sourceColumn" : "STATE_ID",
         "targetColumn" : "ID"
       } ],
-      "name" : "FK_REP_CHANNEL_TYPE",
+      "name" : "FK_CUSTOMER_STATE_ID",
       "primary" : true,
       "selfRelation" : false,
       "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "REPS",
+      "sourceTable" : "CUSTOMERS",
       "targetColumnsUniqueKey" : false,
-      "targetTable" : "CHANNELS",
+      "targetTable" : "STATES",
       "virtual" : false
     } ],
     "schema" : "PUBLIC",
@@ -1491,11 +1442,12 @@
     "catalog" : "PUBLIC",
     "columns" : [ {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "id",
       "foreignKey" : false,
       "generatorType" : "identity",
@@ -1517,20 +1469,21 @@
       "unique" : true
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
-      "fieldName" : "customerId",
+      "constraintList" : null,
+      "fieldName" : "leadId",
       "foreignKey" : true,
       "generatorType" : "assigned",
       "generatorValue" : null,
       "javaType" : "integer",
       "length" : 255,
-      "name" : "CUSTOMER_ID",
+      "name" : "LEAD_ID",
       "nullable" : true,
-      "oldName" : "CUSTOMER_ID",
+      "oldName" : "LEAD_ID",
       "partOfAnyRelation" : true,
       "partOfForeignKey" : true,
       "partOfPrimaryKey" : false,
@@ -1543,11 +1496,12 @@
       "unique" : false
     }, {
       "columnValue" : {
-        "type" : "user-defined",
         "insertable" : true,
         "updatable" : true,
-        "defaultValue" : null
+        "defaultValue" : null,
+        "type" : "user-defined"
       },
+      "constraintList" : null,
       "fieldName" : "entryDate",
       "foreignKey" : false,
       "generatorType" : "assigned",
@@ -1555,7 +1509,7 @@
       "javaType" : "date",
       "length" : 10,
       "name" : "ENTRY_DATE",
-      "nullable" : false,
+      "nullable" : true,
       "oldName" : "ENTRY_DATE",
       "partOfAnyRelation" : false,
       "partOfForeignKey" : false,
@@ -1567,12 +1521,66 @@
       "sequenceSchema" : null,
       "sqlType" : "date",
       "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "repId",
+      "foreignKey" : true,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "integer",
+      "length" : 255,
+      "name" : "REP_ID",
+      "nullable" : true,
+      "oldName" : "REP_ID",
+      "partOfAnyRelation" : true,
+      "partOfForeignKey" : true,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 10,
+      "primaryKey" : false,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : null,
+        "type" : "user-defined"
+      },
+      "constraintList" : null,
+      "fieldName" : "estimatedSale",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "javaType" : "integer",
+      "length" : 255,
+      "name" : "ESTIMATED_SALE",
+      "nullable" : true,
+      "oldName" : "ESTIMATED_SALE",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "precision" : 10,
+      "primaryKey" : false,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : false
     } ],
     "constraints" : [ ],
-    "entityName" : "Leads",
-    "fullyQualifiedName" : "com.salesdb.Leads",
-    "name" : "LEADS",
-    "oldName" : "LEADS",
+    "entityName" : "Quotes",
+    "fullyQualifiedName" : "com.salesdb.Quotes",
+    "name" : "QUOTES",
+    "oldName" : "QUOTES",
     "primaryKey" : {
       "columns" : [ "ID" ],
       "composite" : false,
@@ -1581,42 +1589,76 @@
         "generatorValue" : null,
         "schemaName" : null
       },
-      "name" : "SYS_PK_10128",
+      "name" : "SYS_PK_10136",
       "virtual" : false
     },
     "relations" : [ {
       "cardinality" : "OneToMany",
       "columnsUniqueKey" : false,
       "composite" : false,
-      "fieldName" : "quoteses",
+      "fieldName" : "saleses",
       "mappings" : [ {
         "sourceColumn" : "ID",
-        "targetColumn" : "LEAD_ID"
+        "targetColumn" : "QUOTE_ID"
       } ],
-      "name" : "FK_QUOTES_LEAD_ID",
+      "name" : "FK_SALES_QUOTE_ID",
       "primary" : false,
       "selfRelation" : false,
       "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "LEADS",
+      "sourceTable" : "QUOTES",
       "targetColumnsUniqueKey" : false,
-      "targetTable" : "QUOTES",
+      "targetTable" : "SALES",
+      "virtual" : false
+    }, {
+      "cardinality" : "OneToMany",
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fieldName" : "followUpses",
+      "mappings" : [ {
+        "sourceColumn" : "ID",
+        "targetColumn" : "QUOTE_ID"
+      } ],
+      "name" : "FK_FOLLOW_UP_QUOTE_ID",
+      "primary" : false,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "QUOTES",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "FOLLOW_UPS",
       "virtual" : false
     }, {
       "cardinality" : "ManyToOne",
       "columnsUniqueKey" : false,
       "composite" : false,
-      "fieldName" : "customers",
+      "fieldName" : "reps",
       "mappings" : [ {
-        "sourceColumn" : "CUSTOMER_ID",
+        "sourceColumn" : "REP_ID",
         "targetColumn" : "ID"
       } ],
-      "name" : "FK_LEAD_CUSTOMER_ID",
+      "name" : "FK_QUOTES_REP_ID",
       "primary" : true,
       "selfRelation" : false,
       "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "LEADS",
+      "sourceTable" : "QUOTES",
       "targetColumnsUniqueKey" : false,
-      "targetTable" : "CUSTOMERS",
+      "targetTable" : "REPS",
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fieldName" : "leads",
+      "mappings" : [ {
+        "sourceColumn" : "LEAD_ID",
+        "targetColumn" : "ID"
+      } ],
+      "name" : "FK_QUOTES_LEAD_ID",
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "QUOTES",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "LEADS",
       "virtual" : false
     } ],
     "schema" : "PUBLIC",

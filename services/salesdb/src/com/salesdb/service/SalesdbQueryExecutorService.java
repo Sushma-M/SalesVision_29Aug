@@ -15,49 +15,25 @@ import com.salesdb.models.query.*;
 
 public interface SalesdbQueryExecutorService {
 
-    Page<RepsCountResponse> executeRepsCount(Integer channel, Pageable pageable);
+    Page<SalesByEachRepResponse> executeSalesByEachRep(Integer id, Pageable pageable);
 
-    Downloadable exportRepsCount(ExportType exportType, Integer channel, Pageable pageable);
-
-    Page<LeadsByChannelResponse> executeLeadsByChannel(Integer channel, Pageable pageable);
-
-    Downloadable exportLeadsByChannel(ExportType exportType, Integer channel, Pageable pageable);
+    Downloadable exportSalesByEachRep(ExportType exportType, Integer id, Pageable pageable);
 
     Page<LeadsCountResponse> executeLeadsCount(Integer channel, Pageable pageable);
 
     Downloadable exportLeadsCount(ExportType exportType, Integer channel, Pageable pageable);
 
-    Page<SalesByEachRepResponse> executeSalesByEachRep(Integer id, Pageable pageable);
-
-    Downloadable exportSalesByEachRep(ExportType exportType, Integer id, Pageable pageable);
-
-    Page<CustomersRatioResponse> executeCustomersRatio(Integer year, Integer month, Pageable pageable);
-
-    Downloadable exportCustomersRatio(ExportType exportType, Integer year, Integer month, Pageable pageable);
-
-    Page<SalesByRepsResponse> executeSalesByReps(Integer channel, Pageable pageable);
-
-    Downloadable exportSalesByReps(ExportType exportType, Integer channel, Pageable pageable);
-
     Page<WeeklyQuotesResponse> executeWeeklyQuotes(Integer year, Integer month, Pageable pageable);
 
     Downloadable exportWeeklyQuotes(ExportType exportType, Integer year, Integer month, Pageable pageable);
 
-    Page<SalesRevenueAndCountResponse> executeSalesRevenueAndCount(Integer channel, Pageable pageable);
+    Page<LeadsByChannelResponse> executeLeadsByChannel(Integer channel, Pageable pageable);
 
-    Downloadable exportSalesRevenueAndCount(ExportType exportType, Integer channel, Pageable pageable);
+    Downloadable exportLeadsByChannel(ExportType exportType, Integer channel, Pageable pageable);
 
-    Page<EachRepCustomerWiseSalesResponse> executeEachRepCustomerWiseSales(Integer id, Pageable pageable);
+    Page<CustomersRatioResponse> executeCustomersRatio(Integer year, Integer month, Pageable pageable);
 
-    Downloadable exportEachRepCustomerWiseSales(ExportType exportType, Integer id, Pageable pageable);
-
-    Page<WeeklyConvertedResponse> executeWeeklyConverted(Integer year, Integer month, Pageable pageable);
-
-    Downloadable exportWeeklyConverted(ExportType exportType, Integer year, Integer month, Pageable pageable);
-
-    Page<WeeklyFollowUpsResponse> executeWeeklyFollowUps(Integer year, Integer month, Pageable pageable);
-
-    Downloadable exportWeeklyFollowUps(ExportType exportType, Integer year, Integer month, Pageable pageable);
+    Downloadable exportCustomersRatio(ExportType exportType, Integer year, Integer month, Pageable pageable);
 
     Page<SalesByChannelsResponse> executeSalesByChannels(Integer year, Integer month, Pageable pageable);
 
@@ -67,17 +43,41 @@ public interface SalesdbQueryExecutorService {
 
     Downloadable exportWeeklySales(ExportType exportType, Integer year, Integer month, Pageable pageable);
 
-    Page<WeeklyLeadsResponse> executeWeeklyLeads(Integer year, Integer month, Pageable pageable);
+    Page<TopTrendingProductsResponse> executeTopTrendingProducts(Integer year, Integer month, Pageable pageable);
 
-    Downloadable exportWeeklyLeads(ExportType exportType, Integer year, Integer month, Pageable pageable);
+    Downloadable exportTopTrendingProducts(ExportType exportType, Integer year, Integer month, Pageable pageable);
+
+    Page<WeeklyConvertedResponse> executeWeeklyConverted(Integer year, Integer month, Pageable pageable);
+
+    Downloadable exportWeeklyConverted(ExportType exportType, Integer year, Integer month, Pageable pageable);
+
+    Page<RepsCountResponse> executeRepsCount(Integer channel, Pageable pageable);
+
+    Downloadable exportRepsCount(ExportType exportType, Integer channel, Pageable pageable);
 
     Page<RevenueHeatMapResponse> executeRevenueHeatMap(Integer year, Integer month, Pageable pageable);
 
     Downloadable exportRevenueHeatMap(ExportType exportType, Integer year, Integer month, Pageable pageable);
 
-    Page<TopTrendingProductsResponse> executeTopTrendingProducts(Integer year, Integer month, Pageable pageable);
+    Page<WeeklyLeadsResponse> executeWeeklyLeads(Integer year, Integer month, Pageable pageable);
 
-    Downloadable exportTopTrendingProducts(ExportType exportType, Integer year, Integer month, Pageable pageable);
+    Downloadable exportWeeklyLeads(ExportType exportType, Integer year, Integer month, Pageable pageable);
+
+    Page<EachRepCustomerWiseSalesResponse> executeEachRepCustomerWiseSales(Integer id, Pageable pageable);
+
+    Downloadable exportEachRepCustomerWiseSales(ExportType exportType, Integer id, Pageable pageable);
+
+    Page<SalesByRepsResponse> executeSalesByReps(Integer channel, Pageable pageable);
+
+    Downloadable exportSalesByReps(ExportType exportType, Integer channel, Pageable pageable);
+
+    Page<SalesRevenueAndCountResponse> executeSalesRevenueAndCount(Integer channel, Pageable pageable);
+
+    Downloadable exportSalesRevenueAndCount(ExportType exportType, Integer channel, Pageable pageable);
+
+    Page<WeeklyFollowUpsResponse> executeWeeklyFollowUps(Integer year, Integer month, Pageable pageable);
+
+    Downloadable exportWeeklyFollowUps(ExportType exportType, Integer year, Integer month, Pageable pageable);
 
 }
 

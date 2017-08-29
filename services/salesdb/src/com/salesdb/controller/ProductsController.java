@@ -51,9 +51,9 @@ public class ProductsController {
 	private ProductsService productsService;
 
 	@ApiOperation(value = "Creates a new Products instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Products createProducts(@RequestBody Products products) {
+public Products createProducts(@RequestBody Products products) {
 		LOGGER.debug("Create Products with information: {}" , products);
 
 		products = productsService.create(products);
@@ -61,7 +61,6 @@ public class ProductsController {
 
 	    return products;
 	}
-
 
     @ApiOperation(value = "Returns the Products instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

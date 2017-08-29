@@ -7,6 +7,8 @@ package com.salesdb.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,67 +44,10 @@ public class QueryExecutionController {
     @Autowired
     private SalesdbQueryExecutorService queryService;
 
-    @RequestMapping(value = "/queries/repsCount", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the count of sales reps in each channel")
-    public Page<RepsCountResponse> executeRepsCount(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Executing named query: repsCount");
-        Page<RepsCountResponse> _result = queryService.executeRepsCount(channel, pageable);
-        LOGGER.debug("got the result for named query: repsCount, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file for query repsCount")
-    @RequestMapping(value = "/queries/repsCount/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportRepsCount(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Exporting named query: repsCount");
-
-        return queryService.exportRepsCount(exportType, channel, pageable);
-    }
-
-    @RequestMapping(value = "/queries/leadsByChannel", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the leads made per each category of sales reps")
-    public Page<LeadsByChannelResponse> executeLeadsByChannel(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Executing named query: leadsByChannel");
-        Page<LeadsByChannelResponse> _result = queryService.executeLeadsByChannel(channel, pageable);
-        LOGGER.debug("got the result for named query: leadsByChannel, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file for query leadsByChannel")
-    @RequestMapping(value = "/queries/leadsByChannel/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportLeadsByChannel(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Exporting named query: leadsByChannel");
-
-        return queryService.exportLeadsByChannel(exportType, channel, pageable);
-    }
-
-    @RequestMapping(value = "/queries/leadsCount", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the count of leads taken over by sales reps in each channel")
-    public Page<LeadsCountResponse> executeLeadsCount(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Executing named query: leadsCount");
-        Page<LeadsCountResponse> _result = queryService.executeLeadsCount(channel, pageable);
-        LOGGER.debug("got the result for named query: leadsCount, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file for query leadsCount")
-    @RequestMapping(value = "/queries/leadsCount/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportLeadsCount(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Exporting named query: leadsCount");
-
-        return queryService.exportLeadsCount(exportType, channel, pageable);
-    }
-
     @RequestMapping(value = "/queries/salesByEachRep", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "returns the sales made by each representative")
-    public Page<SalesByEachRepResponse> executeSalesByEachRep(@RequestParam(value = "id", required = false) Integer id, Pageable pageable) {
+    public Page<SalesByEachRepResponse> executeSalesByEachRep(@RequestParam(value = "id", required = false) Integer id, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: salesByEachRep");
         Page<SalesByEachRepResponse> _result = queryService.executeSalesByEachRep(id, pageable);
         LOGGER.debug("got the result for named query: salesByEachRep, result:{}", _result);
@@ -112,54 +57,35 @@ public class QueryExecutionController {
     @ApiOperation(value = "Returns downloadable file for query salesByEachRep")
     @RequestMapping(value = "/queries/salesByEachRep/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportSalesByEachRep(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "id", required = false) Integer id, Pageable pageable) {
+    public Downloadable exportSalesByEachRep(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "id", required = false) Integer id, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Exporting named query: salesByEachRep");
 
         return queryService.exportSalesByEachRep(exportType, id, pageable);
     }
 
-    @RequestMapping(value = "/queries/customersRatio", method = RequestMethod.GET)
+    @RequestMapping(value = "/queries/leadsCount", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the leads made per each category of sales reps")
-    public Page<CustomersRatioResponse> executeCustomersRatio(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Executing named query: customersRatio");
-        Page<CustomersRatioResponse> _result = queryService.executeCustomersRatio(year, month, pageable);
-        LOGGER.debug("got the result for named query: customersRatio, result:{}", _result);
+    @ApiOperation(value = "returns the count of leads taken over by sales reps in each channel")
+    public Page<LeadsCountResponse> executeLeadsCount(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: leadsCount");
+        Page<LeadsCountResponse> _result = queryService.executeLeadsCount(channel, pageable);
+        LOGGER.debug("got the result for named query: leadsCount, result:{}", _result);
         return _result;
     }
 
-    @ApiOperation(value = "Returns downloadable file for query customersRatio")
-    @RequestMapping(value = "/queries/customersRatio/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @ApiOperation(value = "Returns downloadable file for query leadsCount")
+    @RequestMapping(value = "/queries/leadsCount/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportCustomersRatio(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Exporting named query: customersRatio");
+    public Downloadable exportLeadsCount(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: leadsCount");
 
-        return queryService.exportCustomersRatio(exportType, year, month, pageable);
-    }
-
-    @RequestMapping(value = "/queries/salesByReps", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the revenue generated per each category of sales representatives")
-    public Page<SalesByRepsResponse> executeSalesByReps(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Executing named query: salesByReps");
-        Page<SalesByRepsResponse> _result = queryService.executeSalesByReps(channel, pageable);
-        LOGGER.debug("got the result for named query: salesByReps, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file for query salesByReps")
-    @RequestMapping(value = "/queries/salesByReps/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportSalesByReps(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Exporting named query: salesByReps");
-
-        return queryService.exportSalesByReps(exportType, channel, pageable);
+        return queryService.exportLeadsCount(exportType, channel, pageable);
     }
 
     @RequestMapping(value = "/queries/weeklyQuotes", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "returns the quotes made in a month per each week")
-    public Page<WeeklyQuotesResponse> executeWeeklyQuotes(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
+    public Page<WeeklyQuotesResponse> executeWeeklyQuotes(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: weeklyQuotes");
         Page<WeeklyQuotesResponse> _result = queryService.executeWeeklyQuotes(year, month, pageable);
         LOGGER.debug("got the result for named query: weeklyQuotes, result:{}", _result);
@@ -169,92 +95,54 @@ public class QueryExecutionController {
     @ApiOperation(value = "Returns downloadable file for query weeklyQuotes")
     @RequestMapping(value = "/queries/weeklyQuotes/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportWeeklyQuotes(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
+    public Downloadable exportWeeklyQuotes(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Exporting named query: weeklyQuotes");
 
         return queryService.exportWeeklyQuotes(exportType, year, month, pageable);
     }
 
-    @RequestMapping(value = "/queries/salesRevenueAndCount", method = RequestMethod.GET)
+    @RequestMapping(value = "/queries/leadsByChannel", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the total sales revenue generated & count of sales made per each category of sales reps")
-    public Page<SalesRevenueAndCountResponse> executeSalesRevenueAndCount(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Executing named query: salesRevenueAndCount");
-        Page<SalesRevenueAndCountResponse> _result = queryService.executeSalesRevenueAndCount(channel, pageable);
-        LOGGER.debug("got the result for named query: salesRevenueAndCount, result:{}", _result);
+    @ApiOperation(value = "returns the leads made per each category of sales reps")
+    public Page<LeadsByChannelResponse> executeLeadsByChannel(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: leadsByChannel");
+        Page<LeadsByChannelResponse> _result = queryService.executeLeadsByChannel(channel, pageable);
+        LOGGER.debug("got the result for named query: leadsByChannel, result:{}", _result);
         return _result;
     }
 
-    @ApiOperation(value = "Returns downloadable file for query salesRevenueAndCount")
-    @RequestMapping(value = "/queries/salesRevenueAndCount/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @ApiOperation(value = "Returns downloadable file for query leadsByChannel")
+    @RequestMapping(value = "/queries/leadsByChannel/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportSalesRevenueAndCount(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable) {
-        LOGGER.debug("Exporting named query: salesRevenueAndCount");
+    public Downloadable exportLeadsByChannel(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: leadsByChannel");
 
-        return queryService.exportSalesRevenueAndCount(exportType, channel, pageable);
+        return queryService.exportLeadsByChannel(exportType, channel, pageable);
     }
 
-    @RequestMapping(value = "/queries/eachRepCustomerWiseSales", method = RequestMethod.GET)
+    @RequestMapping(value = "/queries/customersRatio", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns each Representative Customer Vs Sales")
-    public Page<EachRepCustomerWiseSalesResponse> executeEachRepCustomerWiseSales(@RequestParam(value = "id", required = false) Integer id, Pageable pageable) {
-        LOGGER.debug("Executing named query: eachRepCustomerWiseSales");
-        Page<EachRepCustomerWiseSalesResponse> _result = queryService.executeEachRepCustomerWiseSales(id, pageable);
-        LOGGER.debug("got the result for named query: eachRepCustomerWiseSales, result:{}", _result);
+    @ApiOperation(value = "returns the leads made per each category of sales reps")
+    public Page<CustomersRatioResponse> executeCustomersRatio(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: customersRatio");
+        Page<CustomersRatioResponse> _result = queryService.executeCustomersRatio(year, month, pageable);
+        LOGGER.debug("got the result for named query: customersRatio, result:{}", _result);
         return _result;
     }
 
-    @ApiOperation(value = "Returns downloadable file for query eachRepCustomerWiseSales")
-    @RequestMapping(value = "/queries/eachRepCustomerWiseSales/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @ApiOperation(value = "Returns downloadable file for query customersRatio")
+    @RequestMapping(value = "/queries/customersRatio/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportEachRepCustomerWiseSales(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "id", required = false) Integer id, Pageable pageable) {
-        LOGGER.debug("Exporting named query: eachRepCustomerWiseSales");
+    public Downloadable exportCustomersRatio(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: customersRatio");
 
-        return queryService.exportEachRepCustomerWiseSales(exportType, id, pageable);
-    }
-
-    @RequestMapping(value = "/queries/weeklyConverted", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the sales converted per each week")
-    public Page<WeeklyConvertedResponse> executeWeeklyConverted(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Executing named query: weeklyConverted");
-        Page<WeeklyConvertedResponse> _result = queryService.executeWeeklyConverted(year, month, pageable);
-        LOGGER.debug("got the result for named query: weeklyConverted, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file for query weeklyConverted")
-    @RequestMapping(value = "/queries/weeklyConverted/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportWeeklyConverted(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Exporting named query: weeklyConverted");
-
-        return queryService.exportWeeklyConverted(exportType, year, month, pageable);
-    }
-
-    @RequestMapping(value = "/queries/weeklyFollowUps", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the follow-ups made in a month")
-    public Page<WeeklyFollowUpsResponse> executeWeeklyFollowUps(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Executing named query: weeklyFollowUps");
-        Page<WeeklyFollowUpsResponse> _result = queryService.executeWeeklyFollowUps(year, month, pageable);
-        LOGGER.debug("got the result for named query: weeklyFollowUps, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file for query weeklyFollowUps")
-    @RequestMapping(value = "/queries/weeklyFollowUps/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportWeeklyFollowUps(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Exporting named query: weeklyFollowUps");
-
-        return queryService.exportWeeklyFollowUps(exportType, year, month, pageable);
+        return queryService.exportCustomersRatio(exportType, year, month, pageable);
     }
 
     @RequestMapping(value = "/queries/salesByChannels", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "returns the sales converted per each channel")
-    public Page<SalesByChannelsResponse> executeSalesByChannels(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
+    public Page<SalesByChannelsResponse> executeSalesByChannels(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: salesByChannels");
         Page<SalesByChannelsResponse> _result = queryService.executeSalesByChannels(year, month, pageable);
         LOGGER.debug("got the result for named query: salesByChannels, result:{}", _result);
@@ -264,7 +152,7 @@ public class QueryExecutionController {
     @ApiOperation(value = "Returns downloadable file for query salesByChannels")
     @RequestMapping(value = "/queries/salesByChannels/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportSalesByChannels(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
+    public Downloadable exportSalesByChannels(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Exporting named query: salesByChannels");
 
         return queryService.exportSalesByChannels(exportType, year, month, pageable);
@@ -273,7 +161,7 @@ public class QueryExecutionController {
     @RequestMapping(value = "/queries/weeklySales", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "returns the sales generated per each week")
-    public Page<WeeklySalesResponse> executeWeeklySales(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
+    public Page<WeeklySalesResponse> executeWeeklySales(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: weeklySales");
         Page<WeeklySalesResponse> _result = queryService.executeWeeklySales(year, month, pageable);
         LOGGER.debug("got the result for named query: weeklySales, result:{}", _result);
@@ -283,54 +171,16 @@ public class QueryExecutionController {
     @ApiOperation(value = "Returns downloadable file for query weeklySales")
     @RequestMapping(value = "/queries/weeklySales/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportWeeklySales(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
+    public Downloadable exportWeeklySales(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Exporting named query: weeklySales");
 
         return queryService.exportWeeklySales(exportType, year, month, pageable);
     }
 
-    @RequestMapping(value = "/queries/weeklyLeads", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the leads created per each week")
-    public Page<WeeklyLeadsResponse> executeWeeklyLeads(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Executing named query: weeklyLeads");
-        Page<WeeklyLeadsResponse> _result = queryService.executeWeeklyLeads(year, month, pageable);
-        LOGGER.debug("got the result for named query: weeklyLeads, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file for query weeklyLeads")
-    @RequestMapping(value = "/queries/weeklyLeads/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportWeeklyLeads(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Exporting named query: weeklyLeads");
-
-        return queryService.exportWeeklyLeads(exportType, year, month, pageable);
-    }
-
-    @RequestMapping(value = "/queries/revenueHeatMap", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "returns the revenue generated in each state in a month")
-    public Page<RevenueHeatMapResponse> executeRevenueHeatMap(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Executing named query: revenueHeatMap");
-        Page<RevenueHeatMapResponse> _result = queryService.executeRevenueHeatMap(year, month, pageable);
-        LOGGER.debug("got the result for named query: revenueHeatMap, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file for query revenueHeatMap")
-    @RequestMapping(value = "/queries/revenueHeatMap/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportRevenueHeatMap(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
-        LOGGER.debug("Exporting named query: revenueHeatMap");
-
-        return queryService.exportRevenueHeatMap(exportType, year, month, pageable);
-    }
-
     @RequestMapping(value = "/queries/topTrendingProducts", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "returns the top trending products of the week")
-    public Page<TopTrendingProductsResponse> executeTopTrendingProducts(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
+    public Page<TopTrendingProductsResponse> executeTopTrendingProducts(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: topTrendingProducts");
         Page<TopTrendingProductsResponse> _result = queryService.executeTopTrendingProducts(year, month, pageable);
         LOGGER.debug("got the result for named query: topTrendingProducts, result:{}", _result);
@@ -340,10 +190,162 @@ public class QueryExecutionController {
     @ApiOperation(value = "Returns downloadable file for query topTrendingProducts")
     @RequestMapping(value = "/queries/topTrendingProducts/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable exportTopTrendingProducts(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable) {
+    public Downloadable exportTopTrendingProducts(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Exporting named query: topTrendingProducts");
 
         return queryService.exportTopTrendingProducts(exportType, year, month, pageable);
+    }
+
+    @RequestMapping(value = "/queries/weeklyConverted", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "returns the sales converted per each week")
+    public Page<WeeklyConvertedResponse> executeWeeklyConverted(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: weeklyConverted");
+        Page<WeeklyConvertedResponse> _result = queryService.executeWeeklyConverted(year, month, pageable);
+        LOGGER.debug("got the result for named query: weeklyConverted, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query weeklyConverted")
+    @RequestMapping(value = "/queries/weeklyConverted/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportWeeklyConverted(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: weeklyConverted");
+
+        return queryService.exportWeeklyConverted(exportType, year, month, pageable);
+    }
+
+    @RequestMapping(value = "/queries/repsCount", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "returns the count of sales reps in each channel")
+    public Page<RepsCountResponse> executeRepsCount(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: repsCount");
+        Page<RepsCountResponse> _result = queryService.executeRepsCount(channel, pageable);
+        LOGGER.debug("got the result for named query: repsCount, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query repsCount")
+    @RequestMapping(value = "/queries/repsCount/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportRepsCount(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: repsCount");
+
+        return queryService.exportRepsCount(exportType, channel, pageable);
+    }
+
+    @RequestMapping(value = "/queries/revenueHeatMap", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "returns the revenue generated in each state in a month")
+    public Page<RevenueHeatMapResponse> executeRevenueHeatMap(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: revenueHeatMap");
+        Page<RevenueHeatMapResponse> _result = queryService.executeRevenueHeatMap(year, month, pageable);
+        LOGGER.debug("got the result for named query: revenueHeatMap, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query revenueHeatMap")
+    @RequestMapping(value = "/queries/revenueHeatMap/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportRevenueHeatMap(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: revenueHeatMap");
+
+        return queryService.exportRevenueHeatMap(exportType, year, month, pageable);
+    }
+
+    @RequestMapping(value = "/queries/weeklyLeads", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "returns the leads created per each week")
+    public Page<WeeklyLeadsResponse> executeWeeklyLeads(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: weeklyLeads");
+        Page<WeeklyLeadsResponse> _result = queryService.executeWeeklyLeads(year, month, pageable);
+        LOGGER.debug("got the result for named query: weeklyLeads, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query weeklyLeads")
+    @RequestMapping(value = "/queries/weeklyLeads/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportWeeklyLeads(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: weeklyLeads");
+
+        return queryService.exportWeeklyLeads(exportType, year, month, pageable);
+    }
+
+    @RequestMapping(value = "/queries/eachRepCustomerWiseSales", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "returns each Representative Customer Vs Sales")
+    public Page<EachRepCustomerWiseSalesResponse> executeEachRepCustomerWiseSales(@RequestParam(value = "id", required = false) Integer id, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: eachRepCustomerWiseSales");
+        Page<EachRepCustomerWiseSalesResponse> _result = queryService.executeEachRepCustomerWiseSales(id, pageable);
+        LOGGER.debug("got the result for named query: eachRepCustomerWiseSales, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query eachRepCustomerWiseSales")
+    @RequestMapping(value = "/queries/eachRepCustomerWiseSales/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportEachRepCustomerWiseSales(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "id", required = false) Integer id, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: eachRepCustomerWiseSales");
+
+        return queryService.exportEachRepCustomerWiseSales(exportType, id, pageable);
+    }
+
+    @RequestMapping(value = "/queries/salesByReps", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "returns the revenue generated per each category of sales representatives")
+    public Page<SalesByRepsResponse> executeSalesByReps(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: salesByReps");
+        Page<SalesByRepsResponse> _result = queryService.executeSalesByReps(channel, pageable);
+        LOGGER.debug("got the result for named query: salesByReps, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query salesByReps")
+    @RequestMapping(value = "/queries/salesByReps/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportSalesByReps(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: salesByReps");
+
+        return queryService.exportSalesByReps(exportType, channel, pageable);
+    }
+
+    @RequestMapping(value = "/queries/salesRevenueAndCount", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "returns the total sales revenue generated & count of sales made per each category of sales reps")
+    public Page<SalesRevenueAndCountResponse> executeSalesRevenueAndCount(@RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: salesRevenueAndCount");
+        Page<SalesRevenueAndCountResponse> _result = queryService.executeSalesRevenueAndCount(channel, pageable);
+        LOGGER.debug("got the result for named query: salesRevenueAndCount, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query salesRevenueAndCount")
+    @RequestMapping(value = "/queries/salesRevenueAndCount/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportSalesRevenueAndCount(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "channel", required = false) Integer channel, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: salesRevenueAndCount");
+
+        return queryService.exportSalesRevenueAndCount(exportType, channel, pageable);
+    }
+
+    @RequestMapping(value = "/queries/weeklyFollowUps", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "returns the follow-ups made in a month")
+    public Page<WeeklyFollowUpsResponse> executeWeeklyFollowUps(@RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: weeklyFollowUps");
+        Page<WeeklyFollowUpsResponse> _result = queryService.executeWeeklyFollowUps(year, month, pageable);
+        LOGGER.debug("got the result for named query: weeklyFollowUps, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query weeklyFollowUps")
+    @RequestMapping(value = "/queries/weeklyFollowUps/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportWeeklyFollowUps(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "year", required = false) Integer year, @RequestParam(value = "month", required = false) Integer month, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: weeklyFollowUps");
+
+        return queryService.exportWeeklyFollowUps(exportType, year, month, pageable);
     }
 
 }

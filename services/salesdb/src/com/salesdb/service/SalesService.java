@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -29,7 +31,7 @@ public interface SalesService {
      * @param salesInstance Details of the Sales to be created; value cannot be null.
      * @return The newly created Sales.
      */
-	Sales create(Sales salesInstance);
+	Sales create(@Valid Sales salesInstance);
 
 
 	/**
@@ -59,7 +61,7 @@ public interface SalesService {
 	 * @return The updated Sales.
 	 * @throws EntityNotFoundException if no Sales is found with given input.
 	 */
-	Sales update(Sales salesInstance) throws EntityNotFoundException;
+	Sales update(@Valid Sales salesInstance) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Sales with the given id.

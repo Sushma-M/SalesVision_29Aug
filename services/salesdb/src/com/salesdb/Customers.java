@@ -32,8 +32,8 @@ public class Customers implements Serializable {
     private Integer id;
     private String name;
     private Integer stateId;
-    private States states;
     private List<Leads> leadses;
+    private States states;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,6 +64,16 @@ public class Customers implements Serializable {
         this.stateId = stateId;
     }
 
+    @JsonInclude(Include.NON_EMPTY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "customers")
+    public List<Leads> getLeadses() {
+        return this.leadses;
+    }
+
+    public void setLeadses(List<Leads> leadses) {
+        this.leadses = leadses;
+    }
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`STATE_ID`", referencedColumnName = "`ID`", insertable = false, updatable = false)
     public States getStates() {
@@ -76,16 +86,6 @@ public class Customers implements Serializable {
         }
 
         this.states = states;
-    }
-
-    @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "customers")
-    public List<Leads> getLeadses() {
-        return this.leadses;
-    }
-
-    public void setLeadses(List<Leads> leadses) {
-        this.leadses = leadses;
     }
 
     @Override

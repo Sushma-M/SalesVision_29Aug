@@ -39,9 +39,9 @@ public class Reps implements Serializable {
     private String picurl;
     private String password;
     private String role;
+    private Channels channels;
     private List<Tasks> taskses;
     private List<Quotes> quoteses;
-    private Channels channels;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -135,6 +135,20 @@ public class Reps implements Serializable {
         this.role = role;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`CHANNEL_TYPE`", referencedColumnName = "`ID`", insertable = false, updatable = false)
+    public Channels getChannels() {
+        return this.channels;
+    }
+
+    public void setChannels(Channels channels) {
+        if(channels != null) {
+            this.channelType = channels.getId();
+        }
+
+        this.channels = channels;
+    }
+
     @JsonInclude(Include.NON_EMPTY)
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "reps")
     public List<Tasks> getTaskses() {
@@ -153,20 +167,6 @@ public class Reps implements Serializable {
 
     public void setQuoteses(List<Quotes> quoteses) {
         this.quoteses = quoteses;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`CHANNEL_TYPE`", referencedColumnName = "`ID`", insertable = false, updatable = false)
-    public Channels getChannels() {
-        return this.channels;
-    }
-
-    public void setChannels(Channels channels) {
-        if(channels != null) {
-            this.channelType = channels.getId();
-        }
-
-        this.channels = channels;
     }
 
     @Override

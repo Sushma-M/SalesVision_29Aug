@@ -9,10 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
@@ -31,10 +33,12 @@ import com.salesdb.Quotes;
  * @see Leads
  */
 @Service("salesdb.LeadsService")
+@Validated
 public class LeadsServiceImpl implements LeadsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LeadsServiceImpl.class);
 
+    @Lazy
     @Autowired
 	@Qualifier("salesdb.QuotesService")
 	private QuotesService quotesService;

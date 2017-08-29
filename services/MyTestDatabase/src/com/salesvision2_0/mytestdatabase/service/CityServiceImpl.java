@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
@@ -22,7 +23,6 @@ import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.salesvision2_0.mytestdatabase.City;
-import com.salesvision2_0.mytestdatabase.Personnel;
 
 
 /**
@@ -31,13 +31,11 @@ import com.salesvision2_0.mytestdatabase.Personnel;
  * @see City
  */
 @Service("MyTestDatabase.CityService")
+@Validated
 public class CityServiceImpl implements CityService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CityServiceImpl.class);
 
-    @Autowired
-	@Qualifier("MyTestDatabase.PersonnelService")
-	private PersonnelService personnelService;
 
     @Autowired
     @Qualifier("MyTestDatabase.CityDao")
@@ -52,13 +50,6 @@ public class CityServiceImpl implements CityService {
 	public City create(City cityInstance) {
         LOGGER.debug("Creating a new City with information: {}", cityInstance);
         City cityInstanceCreated = this.wmGenericDao.create(cityInstance);
-        if(cityInstanceCreated.getPersonnels() != null) {
-            for(Personnel personnel : cityInstanceCreated.getPersonnels()) {
-                personnel.setCity(cityInstanceCreated);
-                LOGGER.debug("Creating a new child Personnel with information: {}", personnel);
-                personnelService.create(personnel);
-            }
-        }
         return cityInstanceCreated;
     }
 
@@ -139,25 +130,7 @@ public class CityServiceImpl implements CityService {
         return this.wmGenericDao.getAggregatedValues(aggregationInfo, pageable);
     }
 
-    @Transactional(readOnly = true, value = "MyTestDatabaseTransactionManager")
-    @Override
-    public Page<Personnel> findAssociatedPersonnels(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated personnels");
 
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("city.id = '" + id + "'");
-
-        return personnelService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    /**
-	 * This setter method should only be used by unit tests
-	 *
-	 * @param service PersonnelService instance
-	 */
-	protected void setPersonnelService(PersonnelService service) {
-        this.personnelService = service;
-    }
 
 }
 

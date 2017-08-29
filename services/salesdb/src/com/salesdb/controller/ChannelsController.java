@@ -51,9 +51,9 @@ public class ChannelsController {
 	private ChannelsService channelsService;
 
 	@ApiOperation(value = "Creates a new Channels instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Channels createChannels(@RequestBody Channels channels) {
+public Channels createChannels(@RequestBody Channels channels) {
 		LOGGER.debug("Create Channels with information: {}" , channels);
 
 		channels = channelsService.create(channels);
@@ -61,7 +61,6 @@ public class ChannelsController {
 
 	    return channels;
 	}
-
 
     @ApiOperation(value = "Returns the Channels instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

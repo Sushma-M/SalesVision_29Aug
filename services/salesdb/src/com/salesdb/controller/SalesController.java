@@ -50,9 +50,9 @@ public class SalesController {
 	private SalesService salesService;
 
 	@ApiOperation(value = "Creates a new Sales instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Sales createSales(@RequestBody Sales salesInstance) {
+public Sales createSales(@RequestBody Sales salesInstance) {
 		LOGGER.debug("Create Sales with information: {}" , salesInstance);
 
 		salesInstance = salesService.create(salesInstance);
@@ -60,7 +60,6 @@ public class SalesController {
 
 	    return salesInstance;
 	}
-
 
     @ApiOperation(value = "Returns the Sales instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

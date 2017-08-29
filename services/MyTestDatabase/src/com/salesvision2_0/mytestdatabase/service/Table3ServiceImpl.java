@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
@@ -30,6 +31,7 @@ import com.salesvision2_0.mytestdatabase.Table3;
  * @see Table3
  */
 @Service("MyTestDatabase.Table3Service")
+@Validated
 public class Table3ServiceImpl implements Table3Service {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Table3ServiceImpl.class);

@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -30,7 +32,7 @@ public interface CustomersService {
      * @param customers Details of the Customers to be created; value cannot be null.
      * @return The newly created Customers.
      */
-	Customers create(Customers customers);
+	Customers create(@Valid Customers customers);
 
 
 	/**
@@ -60,7 +62,7 @@ public interface CustomersService {
 	 * @return The updated Customers.
 	 * @throws EntityNotFoundException if no Customers is found with given input.
 	 */
-	Customers update(Customers customers) throws EntityNotFoundException;
+	Customers update(@Valid Customers customers) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Customers with the given id.

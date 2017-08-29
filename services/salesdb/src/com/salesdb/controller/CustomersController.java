@@ -51,9 +51,9 @@ public class CustomersController {
 	private CustomersService customersService;
 
 	@ApiOperation(value = "Creates a new Customers instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public Customers createCustomers(@RequestBody Customers customers) {
+public Customers createCustomers(@RequestBody Customers customers) {
 		LOGGER.debug("Create Customers with information: {}" , customers);
 
 		customers = customersService.create(customers);
@@ -61,7 +61,6 @@ public class CustomersController {
 
 	    return customers;
 	}
-
 
     @ApiOperation(value = "Returns the Customers instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)

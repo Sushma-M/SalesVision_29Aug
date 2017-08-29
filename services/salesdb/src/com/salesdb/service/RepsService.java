@@ -5,6 +5,8 @@ package com.salesdb.service;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -31,7 +33,7 @@ public interface RepsService {
      * @param reps Details of the Reps to be created; value cannot be null.
      * @return The newly created Reps.
      */
-	Reps create(Reps reps);
+	Reps create(@Valid Reps reps);
 
 
 	/**
@@ -61,7 +63,7 @@ public interface RepsService {
 	 * @return The updated Reps.
 	 * @throws EntityNotFoundException if no Reps is found with given input.
 	 */
-	Reps update(Reps reps) throws EntityNotFoundException;
+	Reps update(@Valid Reps reps) throws EntityNotFoundException;
 
     /**
 	 * Deletes an existing Reps with the given id.

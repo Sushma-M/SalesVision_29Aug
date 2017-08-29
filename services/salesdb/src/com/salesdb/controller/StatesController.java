@@ -51,9 +51,9 @@ public class StatesController {
 	private StatesService statesService;
 
 	@ApiOperation(value = "Creates a new States instance.")
-	@RequestMapping(method = RequestMethod.POST)
+@RequestMapping(method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-	public States createStates(@RequestBody States states) {
+public States createStates(@RequestBody States states) {
 		LOGGER.debug("Create States with information: {}" , states);
 
 		states = statesService.create(states);
@@ -61,7 +61,6 @@ public class StatesController {
 
 	    return states;
 	}
-
 
     @ApiOperation(value = "Returns the States instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
