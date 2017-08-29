@@ -1,0 +1,8 @@
+<wm-partial data-ng-controller="leadsListPageController" name="partial1" type="left-panel"> 
+    <wm-list class="app-list salesforce-leads" name="livelist1" data-ng-controller="livelist1Controller" dataset="bind:Widgets.salesForcePrefab.result" on-click="onLeadClick($event, $scope)" pagesize="100" listclass="nav"> 
+        <wm-listtemplate name="listtemplate1"> 
+            <wm-anchor caption="bind:Widgets.salesForcePrefab.result.Name" data-ng-class="{'active': item.Name === Variables.selectedLead.dataSet.Name}" name="label1" textalign="left" target="_self"></wm-anchor> 
+        </wm-listtemplate> 
+    </wm-list> 
+    <wm-prefab name="salesForcePrefab" prefabname="SalesForce" password="IncW@v3m@k3RUZDc4C39g3zgVnk3Pdt9UKG5U"></wm-prefab> 
+</wm-partial>
